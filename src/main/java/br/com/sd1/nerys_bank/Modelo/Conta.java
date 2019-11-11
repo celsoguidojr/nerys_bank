@@ -46,11 +46,11 @@ public class Conta {
 	}
 
 
-	public BigDecimal getSaldo() {
+	public BigDecimal getVlr_saldo() {
 		return vlr_saldo;
 	}
 
-	public void setSaldo(BigDecimal vlr_saldo) {
+	public void setVlr_saldo(BigDecimal vlr_saldo) {
 		this.vlr_saldo = vlr_saldo;
 	}
         
@@ -76,7 +76,7 @@ public class Conta {
 		strRetorno.append("\nConta: ");
 		//strRetorno.append("\nId: "+getId());
 		//strRetorno.append("\nNome:"+getNome());
-		strRetorno.append("\nSaldo: "+getSaldo().doubleValue());
+		strRetorno.append("\nSaldo: "+getVlr_saldo().doubleValue());
 		strRetorno.append("\n-------- ");
 		
 		return strRetorno.toString(); 

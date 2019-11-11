@@ -11,6 +11,54 @@ package br.com.sd1.nerys_bank.Modelo;
  */
 public class Cliente {
 
+    public Integer getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(Integer id_client) {
+        this.id_client = id_client;
+    }
+
+    public String getNome_cliente() {
+        return nome_cliente;
+    }
+
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
+    }
+
+    public Integer getNum_cpf() {
+        return num_cpf;
+    }
+
+    public void setNum_cpf(Integer num_cpf) {
+        this.num_cpf = num_cpf;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
     
     private Integer id_client;
     private String nome_cliente;
