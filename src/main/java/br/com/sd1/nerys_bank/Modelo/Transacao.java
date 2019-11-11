@@ -22,7 +22,11 @@ public class Transacao {
     private BigDecimal vlr_transacao;
     private char flg_status_tr;
 
-    public Transacao(Integer num_transacao, OffsetDateTime dt_transacao, char flg_tipo_transacao, Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transacao, char flg_status_tr) {
+    public Transacao(Integer num_transacao, OffsetDateTime dt_transacao, 
+            char flg_tipo_transacao, Integer num_conta_tr, 
+            Integer num_conta_dest, BigDecimal vlr_transacao, 
+            char flg_status_tr) {
+        
         this.num_transacao = num_transacao;
         this.dt_transacao = dt_transacao;
         this.flg_tipo_transacao = flg_tipo_transacao;
