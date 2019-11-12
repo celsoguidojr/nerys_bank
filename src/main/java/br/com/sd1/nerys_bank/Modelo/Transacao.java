@@ -16,16 +16,21 @@ public class Transacao {
     
     private Integer num_transacao;
     private OffsetDateTime dt_transacao;
-    private char flg_tipo_transacao;
+    private Integer flg_tipo_transacao;
     private Integer num_conta_tr;
     private Integer num_conta_dest;
     private BigDecimal vlr_transacao;
-    private char flg_status_tr;
+    private String flg_status_tr;
 
+    public Transacao()
+    {
+        
+    }
+    
     public Transacao(Integer num_transacao, OffsetDateTime dt_transacao, 
-            char flg_tipo_transacao, Integer num_conta_tr, 
+            Integer flg_tipo_transacao, Integer num_conta_tr, 
             Integer num_conta_dest, BigDecimal vlr_transacao, 
-            char flg_status_tr) {
+            String flg_status_tr) {
         
         this.num_transacao = num_transacao;
         this.dt_transacao = dt_transacao;
@@ -52,11 +57,11 @@ public class Transacao {
         this.dt_transacao = dt_transacao;
     }
 
-    public char getFlg_tipo_transacao() {
+    public int getFlg_tipo_transacao() {
         return flg_tipo_transacao;
     }
 
-    public void setFlg_tipo_transacao(char flg_tipo_transacao) {
+    public void setFlg_tipo_transacao(int flg_tipo_transacao) {
         this.flg_tipo_transacao = flg_tipo_transacao;
     }
 
@@ -84,11 +89,11 @@ public class Transacao {
         this.vlr_transacao = vlr_transacao;
     }
 
-    public char getFlg_status_tr() {
+    public String getFlg_status_tr() {
         return flg_status_tr;
     }
 
-    public void setFlg_status_tr(char flg_status_tr) {
+    public void setFlg_status_tr(String flg_status_tr) {
         this.flg_status_tr = flg_status_tr;
     }
     
