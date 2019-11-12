@@ -23,6 +23,6 @@ public interface BancoDAO {
     public List<Transacao> getTransacoes(Integer num_conta);
     public boolean saque(Integer num_conta, BigDecimal vlr_saque);
     public Transacao deposito(Integer num_conta, BigDecimal vlr_deposito);
-    public Transacao transferencia(Integer num_conta, BigDecimal vlr_deposito);
+    public Transacao transferencia(Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transferencia);
     
 }

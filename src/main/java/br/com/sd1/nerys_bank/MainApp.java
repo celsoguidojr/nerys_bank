@@ -1,15 +1,12 @@
 package br.com.sd1.nerys_bank;
 
-import br.com.sd1.nerys_bank.Modelo.Conta;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.List;
+
 
 
 public class MainApp extends Application {
@@ -37,21 +34,6 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        ContaDAOImplementacao contaDAO = new ContaDAOImplementacao();
-
-		Conta conta = new Conta();
-		conta.setId(3);
-		conta.setNome("Celso Gomes");
-		conta.setSaldo(new BigDecimal(50000));
-		
-		contaDAO.inserir(conta);
-		
-		List<Conta> listaContas = contaDAO.listar("Celso Gomes");
-	       
-	       for (Iterator<Conta> i = listaContas.iterator(); i.hasNext();) {
-	       	    Conta c = i.next();
-	    	   System.out.println(c.toString());
-	    	}
     }
 
 }
