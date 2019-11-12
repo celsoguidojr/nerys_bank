@@ -212,7 +212,7 @@ public class BancoDAOImplementacao implements BancoDAO {
                 tr.setNum_transacao(rs.getInt("num_transacao"));
                 tr.setDt_transacao(OffsetDateTime.of(convertStringToLocalDateTime(rs.getString("dt_transacao")), ZoneOffset.UTC));
                 tr.setFlg_status_tr(rs.getString("flg_status_tr"));
-                tr.setFlg_tipo_transacao(rs.getString("flg_tipo_transacao"));
+                tr.setFlg_tipo_transacao(rs.getInt("flg_tipo_transacao"));
                 tr.setNum_conta_tr(rs.getInt("num_conta_tr"));
                 tr.setNum_conta_dest(rs.getInt("num_conta_dest"));
                 tr.setVlr_transacao(rs.getBigDecimal("vlr_transacao"));
