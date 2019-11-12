@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.sd1.nerys_bank;
 
 import br.com.sd1.nerys_bank.Modelo.Cliente;
@@ -25,6 +21,8 @@ public interface BancoDAO {
     public BigDecimal getSaldo(Integer num_conta);
     public Integer gravarTransacao(Transacao transacao);
     public List<Transacao> getTransacoes(Integer num_conta);
-    public boolean saque(Integer num_conta);
-    public boolean deposito(Integer num_conta, BigDecimal vlr_deposito);
+    public boolean saque(Integer num_conta, BigDecimal vlr_saque);
+    public Transacao deposito(Integer num_conta, BigDecimal vlr_deposito);
+    public Transacao transferencia(Integer num_conta, BigDecimal vlr_deposito);
+    
 }
