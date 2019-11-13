@@ -11,6 +11,9 @@ package br.com.sd1.nerys_bank.Modelo;
  */
 public class Cliente {
 
+    public Cliente() {
+    }
+
     public Integer getId_client() {
         return id_client;
     }

@@ -43,6 +43,8 @@ public class BancoDAOImplementacao implements BancoDAO {
             ps.setString(5, cliente.getUf());
 
             rs = ps.executeUpdate();
+            
+            cliente.setId_client(rs);
 
             return rs;
         } catch (SQLException e) {
