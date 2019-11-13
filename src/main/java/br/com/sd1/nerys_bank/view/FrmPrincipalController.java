@@ -6,6 +6,8 @@
 package br.com.sd1.nerys_bank.view;
 
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
+import br.com.sd1.nerys_bank.MainApp;
+import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
@@ -65,7 +67,7 @@ public class FrmPrincipalController implements Initializable {
         BancoDAOImplementacao banco = new BancoDAOImplementacao();
         banco.cadastrarCliente(cliente);
         
-        
+        mudarTela("conta");
     }
     
 }
