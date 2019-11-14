@@ -40,7 +40,6 @@ public class MainApp extends Application {
                 stage.setScene(mainScene);
             case "conta":
                 stage.setScene(contaScene);
-                stage.show();
                 System.out.println("tela da conta");
         }
     }
