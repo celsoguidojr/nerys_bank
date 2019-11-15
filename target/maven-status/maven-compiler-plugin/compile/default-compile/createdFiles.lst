@@ -1,6 +1,7 @@
 br\com\sd1\nerys_bank\view\frmController.class
 br\com\sd1\nerys_bank\view\FrmPrincipalController.class
 br\com\sd1\nerys_bank\view\FrmContaController.class
+br\com\sd1\nerys_bank\view\TextFieldFormatter.class
 br\com\sd1\nerys_bank\Conexao.class
 br\com\sd1\nerys_bank\BancoDAOImplementacao.class
 br\com\sd1\nerys_bank\Modelo\Agencia.class

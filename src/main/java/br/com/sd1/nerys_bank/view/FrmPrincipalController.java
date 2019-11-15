@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * FXML Controller class
@@ -54,7 +55,7 @@ public class FrmPrincipalController implements Initializable {
         
     }
     
-    
+    @FXML
     public void gravarCliente(){
         Cliente cliente = new Cliente();
         
@@ -69,5 +70,15 @@ public class FrmPrincipalController implements Initializable {
         
         mudarTela("conta");
     }
+    
+    @FXML
+    void maskCPF(KeyEvent event) {
+        TextFieldFormatter mask = new TextFieldFormatter();
+        mask.setMask("###.###.###-##");
+        mask.setCaracteresValidos("0123456789");
+        mask.setTf(txtCPF);
+        mask.formatter();
+    }
+    
     
 }

@@ -37,7 +37,7 @@
       </MenuBar>
       <TextField fx:id="txtNomeCliente" layoutX="95.0" layoutY="135.0" />
       <Label layoutX="50.0" layoutY="139.0" text="Nome" />
-      <TextField fx:id="txtCPF" layoutX="95.0" layoutY="175.0" />
+      <TextField fx:id="txtCPF" layoutX="95.0" layoutY="175.0" onKeyReleased="#maskCPF" />
       <Label layoutX="57.0" layoutY="179.0" text="CPF" />
       <Label layoutX="41.0" layoutY="218.0" text="Endereço" />
       <TextField fx:id="txtLogradouro" layoutX="95.0" layoutY="214.0" />
