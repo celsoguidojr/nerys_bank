@@ -61,7 +61,7 @@ public class FrmPrincipalController implements Initializable {
         
         
         cliente.setNome_cliente(txtNomeCliente.getText());
-        cliente.setNum_cpf(parseInt(txtCPF.getText()));
+        cliente.setNum_cpf(txtCPF.getText());
         cliente.setLogradouro(txtLogradouro.getText());
         cliente.setCidade(txtCidade.getText());
         cliente.setUf(txtUF.getText());

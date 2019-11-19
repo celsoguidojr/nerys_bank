@@ -30,11 +30,11 @@ public class Cliente {
         this.nome_cliente = nome_cliente;
     }
 
-    public Integer getNum_cpf() {
+    public String getNum_cpf() {
         return num_cpf;
     }
 
-    public void setNum_cpf(Integer num_cpf) {
+    public void setNum_cpf(String num_cpf) {
         this.num_cpf = num_cpf;
     }
 
@@ -65,13 +65,13 @@ public class Cliente {
     
     private Integer id_client;
     private String nome_cliente;
-    private Integer num_cpf;
+    private String num_cpf;
     private String logradouro;
     private String cidade;
     private String uf;
     
     
-    public Cliente(Integer id_client, String nome_cliente, Integer num_cpf, String logradouro, String cidade, String uf) {
+    public Cliente(Integer id_client, String nome_cliente, String num_cpf, String logradouro, String cidade, String uf) {
         this.id_client = id_client;
         this.nome_cliente = nome_cliente;
         this.num_cpf = num_cpf;

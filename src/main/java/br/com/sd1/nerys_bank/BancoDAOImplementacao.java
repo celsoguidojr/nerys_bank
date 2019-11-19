@@ -37,7 +37,7 @@ public class BancoDAOImplementacao implements BancoDAO {
             ps = conexaoBanco.getConexao().prepareStatement(comando.toString());
 
             ps.setString(1, cliente.getNome_cliente());
-            ps.setInt(2, cliente.getNum_cpf());
+            ps.setString(2, cliente.getNum_cpf());
             ps.setString(3, cliente.getLogradouro());
             ps.setString(4, cliente.getCidade());
             ps.setString(5, cliente.getUf());
