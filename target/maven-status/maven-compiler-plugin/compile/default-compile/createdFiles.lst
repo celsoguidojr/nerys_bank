@@ -6,6 +6,7 @@ br\com\sd1\nerys_bank\Conexao.class
 br\com\sd1\nerys_bank\BancoDAOImplementacao.class
 br\com\sd1\nerys_bank\Modelo\Agencia.class
 br\com\sd1\nerys_bank\Modelo\Cliente.class
+br\com\sd1\nerys_bank\Comunicacao\BancoController.class
 br\com\sd1\nerys_bank\MainApp.class
 br\com\sd1\nerys_bank\Modelo\Conta.class
 br\com\sd1\nerys_bank\BancoDAO.class

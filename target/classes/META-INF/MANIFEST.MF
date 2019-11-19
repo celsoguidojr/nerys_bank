@@ -1,4 +1,20 @@
 Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.8.2
-Created-By: 1.6.0_45-b06-451-11M4406 (Apple Inc.)
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: ceki
+Build-Jdk: 1.7.0_17
+Bundle-Description: The slf4j API
+Bundle-Version: 1.7.20
+Implementation-Version: 1.7.20
+X-Compile-Source-JDK: 1.5
+X-Compile-Target-JDK: 1.5
+Implementation-Title: slf4j-api
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: slf4j.api
+Bundle-Name: slf4j-api
+Bundle-Vendor: SLF4J.ORG
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.slf4j;version=1.7.20, org.slf4j.spi;version=1.7.20
+ , org.slf4j.helpers;version=1.7.20, org.slf4j.event;version=1.7.20
+Import-Package: org.slf4j.impl;version=1.6.0
 
