@@ -163,7 +163,7 @@ public class BancoDAOImplementacao implements BancoDAO {
                     atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
 
             ps.setTimestamp(1, dataTransacao);
-            ps.setString(2, String.valueOf(transacao.getFlg_tipo_transacao()));
+            ps.setInt(2, (transacao.getFlg_tipo_transacao()));
             ps.setInt(3, transacao.getNum_conta_tr());
             ps.setInt(4, transacao.getNum_conta_dest());
             ps.setBigDecimal(5, transacao.getVlr_transacao());
