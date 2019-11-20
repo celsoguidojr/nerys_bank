@@ -1,10 +1,17 @@
 package br.com.sd1.nerys_bank.Comunicacao;
 import java.math.BigDecimal;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
+import br.com.sd1.nerys_bank.Modelo.Cliente;
+import br.com.sd1.nerys_bank.Modelo.Transacao;
 
 
 @RestController
@@ -49,9 +56,22 @@ public class BancoController {
 			return "Impossivel realizar a transferencia";
 		}
 	}
+	/*
+	@RequestMapping(value="/list_transacoes",method = RequestMethod.GET,produces="application/json")
+	public @ResponseBody List<Transacao>  getTransacoes(Integer num_conta){
+		return banco.getTransacoes(num_conta);
+	}
+	*/
 	
 	
-	
+	@RequestMapping("/cadastrar_cliente")
+	public String cadastrarCliente(Cliente cliente) {
+		if(banco.cadastrarCliente(cliente)>0) {
+			return "Cliente cadastrado: ";
+		}else {
+			return "Impossivel cadastrar cliente";
+		}
+	}
 	
 	
 }

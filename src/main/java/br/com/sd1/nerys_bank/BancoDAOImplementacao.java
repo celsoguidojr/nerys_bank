@@ -45,7 +45,9 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             rs = ps.executeUpdate();
             
-            cliente.setId_client(rs);
+            
+            if(rs>0)
+            	cliente.setId_client(retornaUltNumCliente());
 
             return rs;
         } catch (SQLException e) {
@@ -146,7 +148,6 @@ public class BancoDAOImplementacao implements BancoDAO {
         PreparedStatement ps = null;
         int rs;
         Conexao conexaoBanco = null;
-        int id = 0;
         try {
             conexaoBanco = new Conexao();
             StringBuilder comando = new StringBuilder();
@@ -505,4 +506,43 @@ public class BancoDAOImplementacao implements BancoDAO {
             }
         }
     }
+    
+    private int retornaUltNumCliente() {
+    	PreparedStatement ps = null;
+        ResultSet rs;
+        Conexao conexao = null;
+        int id_client;
+
+        try {
+            conexao = new Conexao();
+
+            StringBuilder comando = new StringBuilder();
+            comando.append("SELECT COALESCE(MAX(id_client),0) AS id_client FROM clientes");
+
+            ps = conexao.getConexao().prepareStatement(comando.toString());
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+            	id_client = rs.getInt("id_client");
+            	return id_client;
+            }
+            
+            return 0;
+   
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            if (conexao.getConexao() != null) {
+                try {
+                    conexao.getConexao().close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
 }

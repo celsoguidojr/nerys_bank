@@ -24,6 +24,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mainClass>br.com.sd1.nerys_bank.MainApp</mainClass>
