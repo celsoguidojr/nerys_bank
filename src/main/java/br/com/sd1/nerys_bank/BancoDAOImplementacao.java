@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -145,6 +146,7 @@ public class BancoDAOImplementacao implements BancoDAO {
         PreparedStatement ps = null;
         int rs;
         Conexao conexaoBanco = null;
+        int id = 0;
         try {
             conexaoBanco = new Conexao();
             StringBuilder comando = new StringBuilder();
@@ -155,7 +157,8 @@ public class BancoDAOImplementacao implements BancoDAO {
             comando.append("num_conta_dest, ");
             comando.append("vlr_transacao, ");
             comando.append("flg_status_tr ) ");
-            comando.append("VALUES (?,?,?,?,?,?)");
+            comando.append("VALUES (?,?,?,?,?,?) ");
+            //comando.append("RETURNING num_transacao;");
 
             ps = conexaoBanco.getConexao().prepareStatement(comando.toString());
 
@@ -168,9 +171,17 @@ public class BancoDAOImplementacao implements BancoDAO {
             ps.setInt(4, transacao.getNum_conta_dest());
             ps.setBigDecimal(5, transacao.getVlr_transacao());
             ps.setString(6, transacao.getFlg_status_tr());
-
+            
+            
             rs = ps.executeUpdate();
-
+            if(rs>0)
+            	transacao.setNum_transacao(retornaNumUltTransacao());
+            
+            /*if(rs==1) {
+            	transacao.setNum_transacao(num_transacao);
+            }*/
+            
+            
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -266,6 +277,7 @@ public class BancoDAOImplementacao implements BancoDAO {
 
                 novaTransacao.setDt_transacao(OffsetDateTime.now());
                 novaTransacao.setNum_conta_tr(num_conta);
+                novaTransacao.setNum_conta_dest(num_conta);
                 novaTransacao.setFlg_status_tr("Em Aberto");
                 novaTransacao.setVlr_transacao(vlr_saque);
                 novaTransacao.setFlg_tipo_transacao(1);
@@ -297,6 +309,7 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             novaTransacao.setDt_transacao(OffsetDateTime.now());
             novaTransacao.setNum_conta_tr(num_conta);
+            novaTransacao.setNum_conta_dest(num_conta);
             novaTransacao.setFlg_status_tr("Em Aberto");
             novaTransacao.setVlr_transacao(vlr_deposito);
             novaTransacao.setFlg_tipo_transacao(2);
@@ -418,6 +431,8 @@ public class BancoDAOImplementacao implements BancoDAO {
             }
         }
     }
+    
+    
 
     private boolean gravarCredito(Integer num_conta, BigDecimal vlr_credito) {
         PreparedStatement ps = null;
@@ -445,6 +460,45 @@ public class BancoDAOImplementacao implements BancoDAO {
             if (conexaoBanco != null) {
                 try {
                     conexaoBanco.getConexao().close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    
+    private int retornaNumUltTransacao() {
+    	PreparedStatement ps = null;
+        ResultSet rs;
+        Conexao conexao = null;
+        int num_transacao;
+
+        try {
+            conexao = new Conexao();
+
+            StringBuilder comando = new StringBuilder();
+            comando.append("SELECT COALESCE(MAX(num_transacao),0) AS num_transacao FROM transacoes");
+
+            ps = conexao.getConexao().prepareStatement(comando.toString());
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+            	num_transacao = rs.getInt("num_transacao");
+            	return num_transacao;
+            }
+            
+            return 0;
+   
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            if (conexao.getConexao() != null) {
+                try {
+                    conexao.getConexao().close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
