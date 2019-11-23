@@ -1,5 +1,8 @@
 package br.com.sd1.nerys_bank.Comunicacao;
 import java.math.BigDecimal;
+
+import org.json.JSONException;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +68,8 @@ public class BancoController {
 	
 	
 	@RequestMapping("/cadastrar_cliente")
-	public String cadastrarCliente(Cliente cliente) {
+	public String cadastrarCliente(Integer id_client, String nome_cliente, String num_cpf, String logradouro, String cidade, String uf) {
+		Cliente cliente = new Cliente(id_client,nome_cliente,num_cpf,logradouro,cidade,uf);
 		if(banco.cadastrarCliente(cliente)>0) {
 			return "Cliente cadastrado: ";
 		}else {
