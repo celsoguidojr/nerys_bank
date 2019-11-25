@@ -2,7 +2,6 @@ package br.com.sd1.nerys_bank;
 
 import javafx.application.Application;
 
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,30 +9,26 @@ import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
-
 @SpringBootApplication
 public class MainApp extends Application {
     private static Stage stage;
     private static Scene mainScene;
     private static Scene contaScene;
-    
-    
+        
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         stage =stagePrincipal;
         
-        Parent fxmlPrincipal = FXMLLoader.load(getClass().getResource("/fxml/frmPrincipal.fxml"));
+        Parent fxmlPrincipal = FXMLLoader.load(getClass().getResource("/Caixa/frmPrincipal.fxml"));
         mainScene = new Scene(fxmlPrincipal);
         
-        Parent fxmlConta = FXMLLoader.load(getClass().getResource("/fxml/frmConta.fxml"));
+        Parent fxmlConta = FXMLLoader.load(getClass().getResource("/Administrativo/frmCriarConta.fxml"));
         contaScene = new Scene(fxmlConta);
         
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
         contaScene.getStylesheets().add("/styles/frmconta.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Nerys Bank - Caixa");
         stage.setScene(mainScene);
         stage.show();
     }
