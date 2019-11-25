@@ -14,6 +14,8 @@ public class MainApp extends Application {
     private static Stage stage;
     private static Scene mainScene;
     private static Scene contaScene;
+    private static Scene saldoScene;
+    
         
     @Override
     public void start(Stage stagePrincipal) throws Exception {
@@ -25,8 +27,11 @@ public class MainApp extends Application {
         Parent fxmlConta = FXMLLoader.load(getClass().getResource("/Administrativo/frmCriarConta.fxml"));
         contaScene = new Scene(fxmlConta);
         
+        Parent fxmlSaldo = FXMLLoader.load(getClass().getResource("/Caixa/frmSaldo.fxml"));
+        saldoScene = new Scene(fxmlSaldo);
+        
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
-        contaScene.getStylesheets().add("/styles/frmconta.css");
+        contaScene.getStylesheets().add("/styles/frmconta.css");       
         
         stage.setTitle("Nerys Bank - Caixa");
         stage.setScene(mainScene);
@@ -40,6 +45,8 @@ public class MainApp extends Application {
             case "conta":
                 stage.setScene(contaScene);
                 System.out.println("tela da conta");
+            case "saldo":
+            	stage.setScene(saldoScene);
         }
     }
     

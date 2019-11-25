@@ -1,13 +1,7 @@
 package br.com.sd1.nerys_bank.view;
 
-import java.io.IOException;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+import java.awt.event.ActionEvent;
+import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,20 +12,53 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.layout.Pane;
 
 
 public class FrmCaixaPrincipalController implements Initializable {
 
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-    }    
+    @FXML
+    private MenuItem btnExtrato;
 
     @FXML
-    public void abrirFrmDeposito()
-    {
+    private Menu btnMudarConta;
 
+    @FXML
+    private MenuItem btnSaldo;
+
+    @FXML
+    private Menu btnOperacoes;
+
+    @FXML
+    private Pane pnInfoConta;
+
+    @FXML
+    private Menu btnSair;
+
+    @FXML
+    private MenuItem btnDeposito;
+
+    @FXML
+    private MenuItem btnSaque;
+
+    @FXML
+    private MenuItem btnTransferencia;
+    
+    @FXML
+    private MenuBar menuOpcoes;
+
+    @FXML
+    void getSaldo() {
+    	mudarTela("saldo");
     }
-    
-    
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

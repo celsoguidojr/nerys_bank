@@ -21,7 +21,7 @@ import javafx.scene.input.KeyEvent;
  *
  * @author Felip
  */
-public class FrmPrincipalController implements Initializable {
+public class FrmCadastrarClienteController implements Initializable {
 
     @FXML
     private TextField txtNomeCliente;

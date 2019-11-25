@@ -1,6 +1,10 @@
 package br.com.sd1.nerys_bank.Comunicacao;
+import java.io.IOException;
 import java.math.BigDecimal;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -67,6 +71,26 @@ public class BancoController {
 			return "Impossivel cadastrar cliente";
 		}
 	}
+	
+	@RequestMapping("/listar")
+	public String  getTransacoes(Integer num_conta){
+		ObjectMapper mapper = new ObjectMapper();
+		String retorno = "";
+		try {
+			retorno = mapper.writeValueAsString(banco.getTransacoes(num_conta));
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retorno;
+	}
+	
 	
 
 	
