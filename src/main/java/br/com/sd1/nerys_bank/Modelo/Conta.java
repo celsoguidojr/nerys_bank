@@ -18,9 +18,12 @@ public class Conta {
         private Integer num_agencia;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public Conta(Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, int flg_tipo_conta, String senha) {
             this.num_conta = num_conta;
 =======
+=======
+>>>>>>> upstream/master
         public Integer getNum_agencia() {
 			return num_agencia;
 		}
@@ -34,6 +37,9 @@ public class Conta {
 		public Conta(Integer num_agencia, Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, char flg_tipo_conta, String senha) {
             this.num_agencia = num_agencia;
         	this.num_conta = num_conta;
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
 >>>>>>> upstream/master
             this.id_titular = id_titular;
             this.vlr_saldo = vlr_saldo;
