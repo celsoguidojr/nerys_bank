@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -18,7 +17,8 @@ import java.util.List;
 
 public class BancoDAOImplementacao implements BancoDAO {
 
-    public Integer cadastrarCliente(Cliente cliente) {
+    @Override
+	public Integer cadastrarCliente(Cliente cliente) {
         PreparedStatement ps = null;
         int rs;
         Conexao conexaoBanco = null;
@@ -64,7 +64,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public Integer abrirConta(Conta conta) {
+    @Override
+	public Integer abrirConta(Conta conta) {
         PreparedStatement ps = null;
         int rs;
         Conexao conexaoBanco = null;
@@ -103,7 +104,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public BigDecimal getSaldo(Integer num_conta) {
+    @Override
+	public BigDecimal getSaldo(Integer num_conta) {
         PreparedStatement ps = null;
         ResultSet rs;
         BigDecimal vlr_saldo;
@@ -144,7 +146,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public Integer gravarTransacao(Transacao transacao) {
+    @Override
+	public Integer gravarTransacao(Transacao transacao) {
         PreparedStatement ps = null;
         int rs;
         Conexao conexaoBanco = null;
@@ -198,7 +201,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public List<Transacao> getTransacoes(Integer num_conta) {
+    @Override
+	public List<Transacao> getTransacoes(Integer num_conta) {
         PreparedStatement ps = null;
         ResultSet rs;
         Conta conta;
@@ -224,7 +228,9 @@ public class BancoDAOImplementacao implements BancoDAO {
                 Transacao tr = new Transacao();
 
                 tr.setNum_transacao(rs.getInt("num_transacao"));
-                tr.setDt_transacao(OffsetDateTime.of(convertStringToLocalDateTime(rs.getString("dt_transacao")), ZoneOffset.UTC));
+                OffsetDateTime odt = OffsetDateTime.parse ( rs.getString("dt_transacao") , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
+                //OffsetDateTime.of(convertStringToLocalDateTime(rs.getString("dt_transacao")), ZoneOffset.UTC)
+                tr.setDt_transacao(odt);
                 tr.setFlg_status_tr(rs.getString("flg_status_tr"));
                 tr.setFlg_tipo_transacao(rs.getInt("flg_tipo_transacao"));
                 tr.setNum_conta_tr(rs.getInt("num_conta_tr"));
@@ -261,7 +267,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         return dateTime;
     }
 
-    public boolean saque(Integer num_conta, BigDecimal vlr_saque) {
+    @Override
+	public boolean saque(Integer num_conta, BigDecimal vlr_saque) {
         BigDecimal vlr_saldo;
 
         Conexao conexao = null;
@@ -299,7 +306,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public Transacao deposito(Integer num_conta, BigDecimal vlr_deposito) {
+    @Override
+	public Transacao deposito(Integer num_conta, BigDecimal vlr_deposito) {
 
         try {
 
@@ -332,7 +340,8 @@ public class BancoDAOImplementacao implements BancoDAO {
         }
     }
 
-    public Transacao transferencia(Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transferencia) {
+    @Override
+	public Transacao transferencia(Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transferencia) {
 
         try {
 

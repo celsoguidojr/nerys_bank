@@ -8,21 +8,24 @@ package br.com.sd1.nerys_bank.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import br.com.sd1.nerys_bank.Modelo.Cliente;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author Felip
- */
+
 public class FrmContaController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+	private Cliente clienteAtual = new Cliente();
+	
+	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    	criarCliente();
     }    
+    
+    private void criarCliente()
+    {
+    	clienteAtual.setId_client(1);
+    }
     
 }

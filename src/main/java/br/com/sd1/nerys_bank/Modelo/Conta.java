@@ -70,6 +70,7 @@ public class Conta {
             this.flg_tipo_conta = flg_tipo_conta;
         }
 
+	@Override
 	public String toString() {
 		StringBuilder strRetorno = new StringBuilder();
 		strRetorno.append("-------- ");

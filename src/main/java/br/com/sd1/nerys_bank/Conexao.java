@@ -15,7 +15,7 @@ public class Conexao {
 	
 	public Conexao()
 	{
-		String url = "jdbc:postgresql://localhost/nerys_bank?user=postgres&password=1029";
+		String url = "jdbc:postgresql://localhost/nerys_bank?user=postgres&password=postgres";
 		try {
 			conexaoBanco = DriverManager.getConnection(url);
 		} catch (SQLException e) {
