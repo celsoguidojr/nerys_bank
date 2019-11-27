@@ -12,20 +12,10 @@ public class Conta {
     
 	private Integer num_conta;
         private Integer id_titular;
-	private BigDecimal vlr_saldo;
-        private char flg_tipo_conta;
+        private BigDecimal vlr_saldo;
+        private int flg_tipo_conta;
         private String senha;
         private Integer num_agencia;
-
-        public Integer getNum_agencia() {
-			return num_agencia;
-		}
-
-
-		public void setNum_agencia(Integer num_agencia) {
-			this.num_agencia = num_agencia;
-		}
-
 
 		public Conta(Integer num_agencia, Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, char flg_tipo_conta, String senha) {
             this.num_agencia = num_agencia;
@@ -57,6 +47,15 @@ public class Conta {
 		this.num_conta = id;
 	}
 
+    public Integer getNum_agencia() {
+		return num_agencia;
+	}
+
+
+	public void setNum_agencia(Integer num_agencia) {
+		this.num_agencia = num_agencia;
+	}
+
 
 	public BigDecimal getVlr_saldo() {
 		return vlr_saldo;
@@ -74,7 +73,7 @@ public class Conta {
             this.id_titular = id_titular;
         }
 
-        public char getFlg_tipo_conta() {
+        public int getFlg_tipo_conta() {
             return flg_tipo_conta;
         }
 
