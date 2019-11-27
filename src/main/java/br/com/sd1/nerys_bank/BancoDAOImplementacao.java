@@ -478,6 +478,48 @@ public class BancoDAOImplementacao implements BancoDAO {
     }
     
     
+    private Conta getConta(Conta conta) {
+    	PreparedStatement ps = null;
+        ResultSet rs;
+        Conexao conexao = null;
+
+        try {
+            conexao = new Conexao();
+
+            StringBuilder comando = new StringBuilder();
+            comando.append("SELECT num_conta, num_agencia, senha FROM contas ");
+            comando.append("WHERE  num_conta = ? AND num_agencia = ? AND senha = ? ");
+
+            ps = conexao.getConexao().prepareStatement(comando.toString());
+            ps.setInt(1, conta.getNumConta());
+            ps.setInt(1, conta.getNum_agencia());
+            ps.setString(1, conta.getSenha());
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+
+                return conta;
+
+            } else {
+
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            if (conexao.getConexao() != null) {
+                try {
+                    conexao.getConexao().close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    
     private int retornaNumUltTransacao() {
     	PreparedStatement ps = null;
         ResultSet rs;

@@ -65,6 +65,12 @@ public class FrmCadastrarClienteController implements Initializable {
         mudarTela("conta");
     }
     
+    
+    @FXML
+    public void cancel() {
+    	mudarTela("conta");
+    }
+    
     @FXML
     void maskCPF(KeyEvent event) {
         TextFieldFormatter mask = new TextFieldFormatter();
