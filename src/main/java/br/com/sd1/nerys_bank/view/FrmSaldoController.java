@@ -32,7 +32,7 @@ import javafx.scene.input.KeyEvent;
 
 public class FrmSaldoController implements Initializable {
 
-	private static String URL_WEBSERVICE = "http://localhost:8080/";
+	private static String URL_WEBSERVICE = "http://localhost:8989/";
 	@FXML
 	private TextField txtAgencia;
 

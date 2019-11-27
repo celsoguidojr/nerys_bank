@@ -15,9 +15,21 @@ public class Conta {
 	private BigDecimal vlr_saldo;
         private char flg_tipo_conta;
         private String senha;
+        private Integer num_agencia;
 
-        public Conta(Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, char flg_tipo_conta, String senha) {
-            this.num_conta = num_conta;
+        public Integer getNum_agencia() {
+			return num_agencia;
+		}
+
+
+		public void setNum_agencia(Integer num_agencia) {
+			this.num_agencia = num_agencia;
+		}
+
+
+		public Conta(Integer num_agencia, Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, char flg_tipo_conta, String senha) {
+            this.num_agencia = num_agencia;
+        	this.num_conta = num_conta;
             this.id_titular = id_titular;
             this.vlr_saldo = vlr_saldo;
             this.flg_tipo_conta = flg_tipo_conta;

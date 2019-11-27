@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MainApp extends Application {
     private static Stage stage;
+    private static Scene loginScene;
     private static Scene mainScene;
     private static Scene contaScene;
     private static Scene saldoScene;
@@ -20,6 +21,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         stage =stagePrincipal;
+        
+        Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/Caixa/frmLogin.fxml"));
+        loginScene = new Scene(fxmlLogin);
         
         Parent fxmlPrincipal = FXMLLoader.load(getClass().getResource("/Caixa/frmPrincipal.fxml"));
         mainScene = new Scene(fxmlPrincipal);
@@ -34,12 +38,14 @@ public class MainApp extends Application {
         contaScene.getStylesheets().add("/styles/frmconta.css");       
         
         stage.setTitle("Nerys Bank - Caixa");
-        stage.setScene(mainScene);
+        stage.setScene(loginScene);
         stage.show();
     }
 
     public static void mudarTela(String tela){
         switch(tela){
+        	case "login":
+        		stage.setScene(loginScene);
             case "principal":
                 stage.setScene(mainScene);
             case "conta":
