@@ -138,7 +138,7 @@ public class FrmSaldoController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Conta conta = new Conta(new Integer(1), new Integer(1),new BigDecimal(1), 1,new String(""));
+		Conta conta = new Conta(new Integer(1),new Integer(1), new Integer(1),new BigDecimal(1), '1',new String(""));
 		
 		getSaldo(conta);
 
