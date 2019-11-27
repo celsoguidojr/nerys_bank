@@ -7,7 +7,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
 
@@ -20,8 +20,8 @@ public class BancoController {
 	public String teste(){
 		return "Deu certo";
 	}
-	
-	@RequestMapping("/saldo")
+
+	@RequestMapping(value="/saldo", method = RequestMethod.GET)
 	public BigDecimal getSaldo(Integer num_conta) {
 		return banco.getSaldo(num_conta);
 	}
