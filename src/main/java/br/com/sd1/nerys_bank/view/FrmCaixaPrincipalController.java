@@ -55,6 +55,11 @@ public class FrmCaixaPrincipalController implements Initializable {
     void getSaldo() {
     	mudarTela("saldo");
     }
+    
+    @FXML
+    void getSaque() {
+    	mudarTela("saque");
+    }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -7,6 +7,7 @@ package br.com.sd1.nerys_bank.view;
 
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
+import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 
 import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
@@ -24,8 +25,11 @@ import java.util.ResourceBundle;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 
@@ -43,13 +47,22 @@ public class FrmSaldoController implements Initializable {
 
 	@FXML
 	private TextField txtValorsSaldo;
+	
+	@FXML
+    private Button btnMostrarSaldo;
+	
+	
+
 
 	@FXML
 	void Cancelar() {
-
+		mudarTela("principal");
 	}
-
-	private void getSaldo(Integer num_conta) {
+	
+	
+	
+	@FXML
+	private void getSaldo() {
 
 	/*	RestTemplate restTemplate = new RestTemplate();
 		String url = gerarUrlSaldo(num_conta);
@@ -57,8 +70,11 @@ public class FrmSaldoController implements Initializable {
 
 		txtValorsSaldo.setText(response.getBody());*/
 		
-		txtConta.setText(num_conta.toString());
-		txtValorsSaldo.setText(getURLData(gerarUrlSaldo(num_conta)));
+		Conta conta = new Conta(DadosLogin.getNum_agencia(),DadosLogin.getNum_conta(),
+				DadosLogin.getSenha());
+		txtAgencia.setText(conta.getNum_agencia().toString());
+		txtConta.setText(conta.getNumConta().toString());
+		txtValorsSaldo.setText(getURLData(gerarUrlSaldo(conta.getNumConta())));
 		
 	}
 	
@@ -137,10 +153,9 @@ public class FrmSaldoController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//Conta conta = new Conta(new Integer(1),new Integer(1), new Integer(1),new BigDecimal(1), 1,new String(""));
 		//System.out.println(DadosLogin.retornarContaLogin());
-			getSaldo(1);
-			System.out.println("fui executado!");
+		//getSaldo(1);
+		System.out.println("fui executado!");
 		
-
 	}
 
 }

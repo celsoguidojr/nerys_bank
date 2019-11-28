@@ -30,7 +30,7 @@ public class BancoController {
 	@RequestMapping("/saque")
 	public String saque(Integer num_conta, BigDecimal vlr_saque) {
 		if(banco.saque(num_conta, vlr_saque)) {
-			return "Saque realizado no valor de: "+vlr_saque;
+			return "Saque realizado: "+vlr_saque;
 		}else {
 			return "Impossivel realizar o saque";
 		}

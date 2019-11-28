@@ -18,6 +18,7 @@ public class MainApp extends Application {
     private static Scene mainScene;
     private static Scene contaScene;
     private static Scene saldoScene;
+    private static Scene saqueScene;
     
     
     
@@ -36,6 +37,9 @@ public class MainApp extends Application {
         
         Parent fxmlSaldo = FXMLLoader.load(getClass().getResource("/Caixa/frmSaldo.fxml"));
         saldoScene = new Scene(fxmlSaldo);
+        
+        Parent fxmlSaque = FXMLLoader.load(getClass().getResource("/Caixa/frmSaque.fxml"));
+        saqueScene = new Scene(fxmlSaque);
         
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
         contaScene.getStylesheets().add("/styles/frmconta.css");    
@@ -58,6 +62,9 @@ public class MainApp extends Application {
                 break;
             case "saldo":
             	stage.setScene(saldoScene);
+            	break;
+            case "saque":
+            	stage.setScene(saqueScene);
             	break;
         }
     }

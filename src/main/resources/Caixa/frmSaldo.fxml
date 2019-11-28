@@ -25,6 +25,7 @@
               </content>
             </TitledPane>
             <Button fx:id="btnCancelar" layoutX="274.0" layoutY="107.0" mnemonicParsing="false" onAction="#Cancelar" prefHeight="25.0" prefWidth="77.0" text="Cancelar" />
+            <Button fx:id="btnMostrarSaldo" layoutX="183.0" layoutY="107.0" mnemonicParsing="false" onAction="#getSaldo" prefHeight="25.0" prefWidth="77.0" text="Mostrar" />
          </children></AnchorPane>
   </content>
 </TitledPane>
