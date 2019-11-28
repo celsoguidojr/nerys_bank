@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" collapsible="false" prefHeight="396.0" prefWidth="563.0" text="Nery's Bank" textAlignment="CENTER" textOverrun="CLIP" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmLoginController">
+<TitledPane animated="false" collapsible="false" prefHeight="396.0" prefWidth="563.0" text="Nery's Bank" textAlignment="CENTER" textOverrun="CLIP" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>

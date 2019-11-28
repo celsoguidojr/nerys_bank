@@ -6,6 +6,8 @@
 package br.com.sd1.nerys_bank.view;
 
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
+import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
+
 import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
 import br.com.sd1.nerys_bank.Modelo.Conta;
@@ -14,23 +16,18 @@ import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.net.HttpURLConnection;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ResourceBundle;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+
 
 public class FrmSaldoController implements Initializable {
 
@@ -52,7 +49,7 @@ public class FrmSaldoController implements Initializable {
 
 	}
 
-	private void getSaldo(Conta conta) {
+	private void getSaldo(Integer num_conta) {
 
 	/*	RestTemplate restTemplate = new RestTemplate();
 		String url = gerarUrlSaldo(num_conta);
@@ -60,8 +57,8 @@ public class FrmSaldoController implements Initializable {
 
 		txtValorsSaldo.setText(response.getBody());*/
 		
-		txtConta.setText(conta.getNumConta().toString());
-		txtValorsSaldo.setText(getURLData(gerarUrlSaldo(conta.getNumConta())));
+		txtConta.setText(num_conta.toString());
+		txtValorsSaldo.setText(getURLData(gerarUrlSaldo(num_conta)));
 		
 	}
 	
@@ -138,9 +135,11 @@ public class FrmSaldoController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Conta conta = new Conta(new Integer(1),new Integer(1), new Integer(1),new BigDecimal(1), '1',new String(""));
+		//Conta conta = new Conta(new Integer(1),new Integer(1), new Integer(1),new BigDecimal(1), 1,new String(""));
+		//System.out.println(DadosLogin.retornarContaLogin());
+			getSaldo(1);
+			System.out.println("fui executado!");
 		
-		getSaldo(conta);
 
 	}
 

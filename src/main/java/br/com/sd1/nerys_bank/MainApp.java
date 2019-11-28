@@ -9,15 +9,18 @@ import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class MainApp extends Application {
+   
     private static Stage stage;
     private static Scene loginScene;
     private static Scene mainScene;
     private static Scene contaScene;
     private static Scene saldoScene;
     
-        
+    
+    
     @Override
     public void start(Stage stagePrincipal) throws Exception {
         stage =stagePrincipal;
@@ -35,7 +38,7 @@ public class MainApp extends Application {
         saldoScene = new Scene(fxmlSaldo);
         
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
-        contaScene.getStylesheets().add("/styles/frmconta.css");       
+        contaScene.getStylesheets().add("/styles/frmconta.css");    
         
         stage.setTitle("Nerys Bank - Caixa");
         stage.setScene(loginScene);
@@ -46,13 +49,16 @@ public class MainApp extends Application {
         switch(tela){
         	case "login":
         		stage.setScene(loginScene);
+        		break;
             case "principal":
                 stage.setScene(mainScene);
+                break;
             case "conta":
                 stage.setScene(contaScene);
-                System.out.println("tela da conta");
+                break;
             case "saldo":
             	stage.setScene(saldoScene);
+            	break;
         }
     }
     

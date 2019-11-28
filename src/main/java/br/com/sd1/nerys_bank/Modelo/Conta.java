@@ -10,21 +10,31 @@ import java.math.BigDecimal;
 public class Conta {
 
     
-	private Integer num_conta;
+		private Integer num_conta;
         private Integer id_titular;
         private BigDecimal vlr_saldo;
         private int flg_tipo_conta;
         private String senha;
         private Integer num_agencia;
 
-		public Conta(Integer num_agencia, Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, char flg_tipo_conta, String senha) {
+	public Conta(Integer num_agencia, Integer num_conta, Integer id_titular, BigDecimal vlr_saldo, Integer flg_tipo_conta, String senha) {
             this.num_agencia = num_agencia;
         	this.num_conta = num_conta;
             this.id_titular = id_titular;
             this.vlr_saldo = vlr_saldo;
             this.flg_tipo_conta = flg_tipo_conta;
             this.senha = senha;
-        }
+    }
+		
+	public Conta (Integer num_agencia, Integer num_conta, String senha) {
+		this.num_agencia = num_agencia;
+		this.num_conta = num_conta;
+		this.senha = senha;
+	}
+	
+	public Conta (Integer num_conta) {
+		this.num_conta = num_conta;
+	}
 
 
 	public Conta() {
@@ -77,7 +87,7 @@ public class Conta {
             return flg_tipo_conta;
         }
 
-        public void setFlg_tipo_conta(char flg_tipo_conta) {
+        public void setFlg_tipo_conta(Integer flg_tipo_conta) {
             this.flg_tipo_conta = flg_tipo_conta;
         }
 

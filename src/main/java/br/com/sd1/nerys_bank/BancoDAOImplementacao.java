@@ -478,7 +478,7 @@ public class BancoDAOImplementacao implements BancoDAO {
     }
     
     
-    private Conta getConta(Conta conta) {
+    public Conta getConta(Conta conta) {
     	PreparedStatement ps = null;
         ResultSet rs;
         Conexao conexao = null;
@@ -492,8 +492,8 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             ps = conexao.getConexao().prepareStatement(comando.toString());
             ps.setInt(1, conta.getNumConta());
-            ps.setInt(1, conta.getNum_agencia());
-            ps.setString(1, conta.getSenha());
+            ps.setInt(2, conta.getNum_agencia());
+            ps.setString(3, conta.getSenha());
             rs = ps.executeQuery();
 
             if (rs.next()) {

@@ -13,7 +13,7 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="txtAgencia" layoutX="148.0" layoutY="97.0" prefHeight="29.0" prefWidth="265.0" text="Agência">
+            <TextField fx:id="txtAgencia" layoutX="148.0" layoutY="97.0" prefHeight="29.0" prefWidth="265.0" promptText="Agência">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -21,7 +21,7 @@
                   <Glow level="0.84" />
                </effect>
             </TextField>
-            <TextField fx:id="txtConta" layoutX="148.0" layoutY="145.0" prefHeight="29.0" prefWidth="265.0" text="Conta">
+            <TextField fx:id="txtConta" layoutX="148.0" layoutY="145.0" prefHeight="29.0" prefWidth="265.0" promptText="Conta">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -37,7 +37,7 @@
                   <ColorAdjust />
                </effect>
             </Button>
-            <Button fx:id="btnEntrar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="166.0" layoutY="263.0" mnemonicParsing="false" prefWidth="70.0" text="Entrar" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btnEntrar" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="166.0" layoutY="263.0" mnemonicParsing="false" onAction="#validarLogin" prefWidth="70.0" text="Entrar" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -45,7 +45,7 @@
                   <ColorAdjust hue="0.02" saturation="0.4" />
                </effect>
             </Button>
-            <TextField fx:id="txtSenha" layoutX="148.0" layoutY="192.0" prefHeight="29.0" prefWidth="265.0" text="Senha">
+            <TextField fx:id="txtSenha" layoutX="148.0" layoutY="192.0" prefHeight="29.0" prefWidth="265.0" promptText="Senha">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
