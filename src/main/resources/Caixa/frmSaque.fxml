@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="171.0" prefWidth="367.0" text="Nerys Bank - Saque" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmSaqueController">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="171.0" prefWidth="367.0" text="Nerys Bank - Saque" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmSaqueController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
@@ -25,7 +28,7 @@
               </content>
             </TitledPane>
             <Button fx:id="btnConfirmar" layoutX="191.0" layoutY="107.0" mnemonicParsing="false" onAction="#enviarSaque" prefHeight="25.0" prefWidth="75.0" text="Confirmar" />
-            <Button fx:id="btnCancelar" layoutX="274.0" layoutY="107.0" mnemonicParsing="false" onAction="#Cancelar" prefHeight="25.0" prefWidth="77.0" text="Cancelar" />
+            <Button fx:id="btnCancelar" layoutX="274.0" layoutY="107.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="77.0" text="Cancelar" />
             <Label fx:id="txtSacado" layoutX="55.0" layoutY="111.0" text="Valor do saque" />
          </children></AnchorPane>
   </content>

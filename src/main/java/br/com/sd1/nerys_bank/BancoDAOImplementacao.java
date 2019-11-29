@@ -44,8 +44,7 @@ public class BancoDAOImplementacao implements BancoDAO {
             ps.setString(5, cliente.getUf());
 
             rs = ps.executeUpdate();
-            
-            
+                        
             if(rs>0)
             	cliente.setId_client(retornaUltNumCliente());
 
@@ -388,7 +387,7 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             ps = conexaoBanco.getConexao().prepareStatement(comando.toString());
 
-            ps.setString(1, "Concluida");
+            ps.setString(1, "Concluída");
             ps.setInt(2, transacao.getNum_transacao());
 
             rs = ps.executeUpdate();
@@ -498,8 +497,7 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             if (rs.next()) {
 
-
-                return conta;
+            	return conta;
 
             } else {
 

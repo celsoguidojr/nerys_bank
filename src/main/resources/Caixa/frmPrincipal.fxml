@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -7,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmCaixaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmCaixaPrincipalController">
     <stylesheets>
         <URL value="@/styles/frmprincipal.css" />
     </stylesheets>
@@ -23,12 +27,12 @@
           <Menu fx:id="btnOperacoes" mnemonicParsing="false" text="Operações">
             <items>
               <MenuItem fx:id="btnSaque" mnemonicParsing="false" onAction="#getSaque" text="Saque" />
-                  <MenuItem fx:id="btnDeposito" mnemonicParsing="false" text="Deposito" />
+                  <MenuItem fx:id="btnDeposito" mnemonicParsing="false" onAction="#getDeposito" text="Deposito" />
                   <MenuItem fx:id="btnTransferencia" mnemonicParsing="false" text="Transferencia" />
             </items>
           </Menu>
           <Menu fx:id="btnMudarConta" mnemonicParsing="false" text="Mudar Conta" />
-          <Menu fx:id="btnSair" mnemonicParsing="false" text="Sair " />
+          <Menu fx:id="btnSair" mnemonicParsing="false" onAction="#cancel" text="Sair " />
         </menus>
       </MenuBar>
       <Pane fx:id="pnInfoConta" layoutX="446.0" layoutY="25.0" prefHeight="166.0" prefWidth="154.0" />

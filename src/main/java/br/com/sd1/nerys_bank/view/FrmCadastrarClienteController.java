@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * FXML Controller class
@@ -52,23 +54,35 @@ public class FrmCadastrarClienteController implements Initializable {
     @FXML
     public void gravarCliente(){
         Cliente cliente = new Cliente();
-        
-        
         cliente.setNome_cliente(txtNomeCliente.getText());
         cliente.setNum_cpf(txtCPF.getText());
         cliente.setLogradouro(txtLogradouro.getText());
         cliente.setCidade(txtCidade.getText());
         cliente.setUf(txtUF.getText());
+
         BancoDAOImplementacao banco = new BancoDAOImplementacao();
-        banco.cadastrarCliente(cliente);
-        
-        mudarTela("conta");
+        if(banco.cadastrarCliente(cliente) > 0)
+        {
+        	Alert alert = new Alert(AlertType.CONFIRMATION);
+        	alert.setTitle("Confirmação");
+        	alert.setHeaderText("Cliente Cadastrado.");
+        	alert.showAndWait();
+        	mudarTela("conta");
+        }
+        else
+        {
+        	Alert alert = new Alert(AlertType.ERROR);
+        	alert.setTitle("Erro");
+        	alert.setHeaderText("Problema na gravação do cliente, tente novamente.");
+        	alert.showAndWait();
+        	return;
+        }
     }
     
     
     @FXML
     public void cancel() {
-    	mudarTela("conta");
+    	mudarTela("principal");
     }
     
     @FXML

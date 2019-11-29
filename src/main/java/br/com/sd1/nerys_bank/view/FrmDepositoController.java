@@ -1,68 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.sd1.nerys_bank.view;
 
-import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
 import static br.com.sd1.nerys_bank.MainApp.mudarTela;
-
-import br.com.sd1.nerys_bank.Modelo.Conta;
 
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
-public class FrmSaldoController implements Initializable {
-
+public class FrmDepositoController {
+	
 	private static String URL_WEBSERVICE = "http://localhost:8989/";
-	@FXML
-	private TextField txtAgencia;
 
 	@FXML
-	private TextField txtConta;
+    private Button btnConfirmar;  
 
-	@FXML
-	private Button btnCancelar;
+    @FXML
+    private TextField txtConta;
 
-	@FXML
-	private TextField txtValorsSaldo;
+    @FXML
+    private Button btnCancelar;
 
-	@FXML
-	private Button btnMostrarSaldo;
+    @FXML
+    private TextField txtValorDeposito;
 
-	@FXML
-	void Cancelar() {
-		mudarTela("principal");
-	}
+    @FXML
+    void enviarDeposito() {    	
+		String msgRetorno = getURLData(
+				gerarUrl(Integer.valueOf(txtConta.getText()), BigDecimal.valueOf(Float.parseFloat(txtValorDeposito.getText()))));
 
-	@FXML
-	private void getSaldo() {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Informação");
+    	alert.setHeaderText(msgRetorno);
+    	alert.showAndWait();
+    }
 
-		/*
-		 * RestTemplate restTemplate = new RestTemplate(); String url =
-		 * gerarUrlSaldo(num_conta); ResponseEntity<String> response =
-		 * restTemplate.getForEntity(url, String.class);
-		 * 
-		 * txtValorsSaldo.setText(response.getBody());
-		 */
-
-		Conta conta = new Conta(DadosLogin.getNum_agencia(), DadosLogin.getNum_conta(), DadosLogin.getSenha());
-		txtAgencia.setText(conta.getNum_agencia().toString());
-		txtConta.setText(conta.getNumConta().toString());
-		txtValorsSaldo.setText(getURLData(gerarUrlSaldo(conta.getNumConta())));
-
-	}
+    @FXML
+    void cancel() {
+    	txtConta.setText("");
+    	txtValorDeposito.setText("");
+    	mudarTela("principal");
+    }
 
 	public static String getURLData(String url) {
 
@@ -86,10 +71,8 @@ public class FrmSaldoController implements Initializable {
 			// tenta colocar dados dentro do buffer. enquanto existirem dados
 			// (resultado da leitura diferentede -1), a execução continua
 			while (in.read(buffer) != -1) {
-
 				// faz o append dos dados lidos na saida (StringBuilder)
 				saida.append(new String(buffer));
-
 			}
 
 			// fecha o input stream
@@ -128,17 +111,10 @@ public class FrmSaldoController implements Initializable {
 
 	}
 
-	private String gerarUrlSaldo(int num_conta) {
-		String retorno = "" + URL_WEBSERVICE + "saldo?num_conta=" + num_conta;
+	private String gerarUrl(int num_conta, BigDecimal vlr_deposito) {
+		String retorno = "" + URL_WEBSERVICE + "deposito?num_conta=" + num_conta + "&vlr_deposito=" + vlr_deposito;
 		return retorno;
 	}
-	
-	@FXML
-    public void cancel() {
-    	mudarTela("principal");
-    }
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-	}
 }
+

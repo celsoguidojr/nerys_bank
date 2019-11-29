@@ -1,10 +1,5 @@
 package br.com.sd1.nerys_bank.Comunicacao;
 
-import java.math.BigDecimal;
-
-import br.com.sd1.nerys_bank.BancoDAOImplementacao;
-import br.com.sd1.nerys_bank.Modelo.Conta;
-
 public class DadosLogin {
 	private static Integer num_conta = 0;
 	private static Integer num_agencia = 0;
