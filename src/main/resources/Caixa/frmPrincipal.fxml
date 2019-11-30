@@ -21,14 +21,14 @@
             <Menu mnemonicParsing="false" text="Consultas">
               <items>
                 <MenuItem fx:id="btnSaldo" mnemonicParsing="false" onAction="#getSaldo" text="Saldo" />
-                  <MenuItem fx:id="btnExtrato" mnemonicParsing="false" text="Extrato" />
+                  <MenuItem fx:id="btnExtrato" mnemonicParsing="false" onAction="#getExtrato" text="Extrato" />
               </items>
             </Menu>
           <Menu fx:id="btnOperacoes" mnemonicParsing="false" text="Operações">
             <items>
               <MenuItem fx:id="btnSaque" mnemonicParsing="false" onAction="#getSaque" text="Saque" />
                   <MenuItem fx:id="btnDeposito" mnemonicParsing="false" onAction="#getDeposito" text="Deposito" />
-                  <MenuItem fx:id="btnTransferencia" mnemonicParsing="false" text="Transferencia" />
+                  <MenuItem fx:id="btnTransferencia" mnemonicParsing="false" onAction="#getTransferencia" text="Transferencia" />
             </items>
           </Menu>
           <Menu fx:id="btnMudarConta" mnemonicParsing="false" text="Mudar Conta" />

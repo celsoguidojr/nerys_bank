@@ -20,12 +20,12 @@ public class MainApp extends Application {
     private static Scene saldoScene;
     private static Scene saqueScene;
     private static Scene depositoScene;
-    
-    
+    private static Scene transferenciaScene; 
+    private static Scene extratoScene; 
     
     @Override
     public void start(Stage stagePrincipal) throws Exception {
-        stage =stagePrincipal;
+        stage = stagePrincipal;
         
         Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/Caixa/frmLogin.fxml"));
         loginScene = new Scene(fxmlLogin);
@@ -44,6 +44,12 @@ public class MainApp extends Application {
         
         Parent fxmlDeposito = FXMLLoader.load(getClass().getResource("/Caixa/frmDeposito.fxml"));
         depositoScene = new Scene(fxmlDeposito);
+        
+        Parent fxmlTransferencia = FXMLLoader.load(getClass().getResource("/Caixa/frmTransferencia.fxml"));
+        transferenciaScene = new Scene(fxmlTransferencia);
+        
+        Parent fxmlExtrato = FXMLLoader.load(getClass().getResource("/Caixa/frmExtrato.fxml"));
+        extratoScene = new Scene(fxmlExtrato);
         
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
         contaScene.getStylesheets().add("/styles/frmconta.css");    
@@ -73,13 +79,18 @@ public class MainApp extends Application {
             case "deposito":
             	stage.setScene(depositoScene);
             	break;
+            case "transferencia":
+            	stage.setScene(transferenciaScene);
+            	break;
+            case "extrato":
+            	stage.setScene(extratoScene);
+            	break;
         }
     }
     
     public static void main(String[] args) {
     	SpringApplication.run(MainApp.class, args);
-    	launch(args);
-        
+    	launch(args);        
     }
 
 }

@@ -17,11 +17,6 @@ import br.com.sd1.nerys_bank.Modelo.Transacao;
 public class BancoController {
 	BancoDAOImplementacao banco = new BancoDAOImplementacao();
 
-	@RequestMapping("/")
-	public String teste() {
-		return "Deu certo";
-	}
-
 	@RequestMapping(value = "/saldo", method = RequestMethod.GET)
 	public BigDecimal getSaldo(Integer num_conta) {
 		return banco.getSaldo(num_conta);
@@ -32,7 +27,7 @@ public class BancoController {
 		if (banco.saque(num_conta, vlr_saque)) {
 			return "Saque realizado: " + vlr_saque;
 		} else {
-			return "Impossível realizar o saque";
+			return "Impossível realizar o saque.";
 		}
 	}
 
@@ -49,17 +44,28 @@ public class BancoController {
 			
 			return msgRetorno.toString();			
 		}else {
-			return "Impossível realizar o deposito";
+			return "Impossível realizar o depósito";
 		}
 	}
 
 	@RequestMapping("/transferencia")
 	public String transferencia(Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transferencia) {
-		if (banco.transferencia(num_conta_tr, num_conta_dest, vlr_transferencia) != null) {
-			return "Transferencia realizada no valor de: " + vlr_transferencia;
-		} else {
-			return "Impossível realizar a transferencia";
+		
+		Transacao transferencia = banco.transferencia(num_conta_tr, num_conta_dest, vlr_transferencia);
+		
+		if(transferencia != null) {
+			
+			StringBuilder msgRetorno = new StringBuilder();
+			msgRetorno.append("-----Transferência realizada!-----\n");
+			msgRetorno.append("Nº Operação: "+ transferencia.getNum_transacao() + "\n");
+			msgRetorno.append("Nº Conta: " + transferencia.getNum_conta_dest() + "\n");
+			msgRetorno.append("Valor: "+ transferencia.getVlr_transacao()+"\n");
+			
+			return msgRetorno.toString();			
+		}else {
+			return "Impossível realizar a transferência.";
 		}
+		
 	}
 
 	@RequestMapping("/cadastrar_cliente")
@@ -69,11 +75,11 @@ public class BancoController {
 		if (banco.cadastrarCliente(cliente) > 0) {
 			return "Cliente cadastrado: ";
 		} else {
-			return "Impossivel cadastrar cliente";
+			return "Impossível cadastrar cliente.";
 		}
 	}
 
-	@RequestMapping("/listar")
+	@RequestMapping("/extrato")
 	public String getTransacoes(Integer num_conta) {
 		ObjectMapper mapper = new ObjectMapper();
 		String retorno = "";

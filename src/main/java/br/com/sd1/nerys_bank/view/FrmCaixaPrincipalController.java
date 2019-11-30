@@ -43,6 +43,12 @@ public class FrmCaixaPrincipalController implements Initializable {
     
     @FXML
     private MenuBar menuOpcoes;
+    
+      
+    @FXML
+    void getExtrato() {
+		mudarTela("extrato");
+    }
 
     @FXML
     void getSaldo() {
@@ -57,6 +63,11 @@ public class FrmCaixaPrincipalController implements Initializable {
     @FXML
     void getSaque() {
     	mudarTela("saque");
+    }
+    
+        @FXML
+    void getTransferencia() {
+    	mudarTela("transferencia");
     }
     
     @FXML
