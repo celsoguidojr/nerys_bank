@@ -8,11 +8,22 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
+import br.com.sd1.nerys_bank.Modelo.Transacao;
+import br.com.sd1.nerys_bank.Modelo.TransacaoList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -20,22 +31,38 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
 
-public class FrmExtratoController {
-	
+public class FrmExtratoController implements Initializable{
+
 	private static String URL_WEBSERVICE = "http://localhost:8989/";
+
 	
     @FXML
-    private DatePicker dtInicial;
+    private TableView<Transacao> tableDados;
 
+    @FXML
+    private TableColumn<Transacao, OffsetDateTime> colDtTransacao;
+    
+    private TableColumn<Transacao,Integer> colNumTransacao;
+
+    @FXML
+    private TableColumn<Transacao, Integer> colContaOrigem;
+    
+    @FXML
+    private TableColumn<Transacao, Integer> colTipo;
+
+    @FXML
+    private TableColumn<Transacao, BigDecimal> colValor;
+
+    @FXML
+    private TableColumn<Transacao, Integer> colContaDestino;
+    
+    @FXML
+    private TableColumn<Transacao, String> colStatus;
+    
     @FXML
     private TextField txtAgencia;
-
-    @FXML
-    private TextField txtConta;
-
-    @FXML
-    private Button btnCancelar;
 
     @FXML
     private DatePicker dtFinal;
@@ -44,27 +71,56 @@ public class FrmExtratoController {
     private Button btnConsultar;
 
     @FXML
+    private DatePicker dtInicial;
+
+
+
+    @FXML
+    private TextField txtConta;
+    
+
+    @FXML
+    private Button btnCancelar;
+
+
+
+    @FXML
     private TextField txtNomeCliente;
 
-    @FXML
-    void consultar() {
-    	//String msgRetorno = getURLData(
-		//		gerarUrl(DadosLogin.getNum_conta(), Integer.valueOf(txtConta.getText()), 
-		//				BigDecimal.valueOf(Float.parseFloat(txtValorTransferencia.getText()))));
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    
+	@FXML
+	void consultar() {
 
-    	Alert alert = new Alert(AlertType.INFORMATION);
-    	alert.setTitle("Informação");
-    	//alert.setHeaderText(msgRetorno);
-    	alert.showAndWait();    	
-    }
-	
-    @FXML
-    void cancel() {
-    	txtConta.setText("");
-    	txtAgencia.setText("");
-    	txtNomeCliente.setText("");
-    	mudarTela("principal");
-    }
+		RestTemplate restTemplate = new RestTemplate();
+		String url = gerarUrl(DadosLogin.getNum_conta());
+
+		TransacaoList response = restTemplate.getForObject(url, TransacaoList.class);
+		//List<Transacao> lista = response.getTransacoes();
+
+		// System.out.println(lista[0].getVlr_transacao());
+		// txtValorsSaldo.setText(response.getBody());
+
+		// List<Transacao> msgRetorno = (List<Transacao>)getURLData(gerarUrl());
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Informação");
+		// alert.setHeaderText(msgRetorno);
+		alert.showAndWait();
+	}
+
+	@FXML
+	void cancel() {
+		txtConta.setText("");
+		txtAgencia.setText("");
+		txtNomeCliente.setText("");
+		mudarTela("principal");
+	}
 
 	public static String getURLData(String url) {
 
@@ -128,10 +184,11 @@ public class FrmExtratoController {
 
 	}
 
-	private String gerarUrl(int num_conta_tr, int num_conta_dest, BigDecimal vlr_transferencia) {
-		String retorno = "" + URL_WEBSERVICE + "transferencia?num_conta_tr=" + num_conta_tr +"&num_conta_dest="+ num_conta_dest  + "&vlr_transferencia=" + vlr_transferencia;
+	private String gerarUrl(int num_conta) {
+		String retorno = URL_WEBSERVICE + "extrato?num_conta=" + num_conta;
 		return retorno;
 	}
 
-}
 
+
+}

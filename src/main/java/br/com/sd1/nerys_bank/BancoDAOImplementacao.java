@@ -3,6 +3,8 @@ package br.com.sd1.nerys_bank;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
 import br.com.sd1.nerys_bank.Modelo.Conta;
 import br.com.sd1.nerys_bank.Modelo.Transacao;
+import br.com.sd1.nerys_bank.Modelo.TransacaoList;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.sql.PreparedStatement;
@@ -201,7 +203,7 @@ public class BancoDAOImplementacao implements BancoDAO {
     }
 
     @Override
-	public List<Transacao> getTransacoes(Integer num_conta) {
+	public TransacaoList getTransacoes(Integer num_conta) {
         PreparedStatement ps = null;
         ResultSet rs;
         Conta conta;
@@ -227,8 +229,8 @@ public class BancoDAOImplementacao implements BancoDAO {
                 Transacao tr = new Transacao();
 
                 tr.setNum_transacao(rs.getInt("num_transacao"));
-                OffsetDateTime odt = OffsetDateTime.parse ( rs.getString("dt_transacao") , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
-                //OffsetDateTime.of(convertStringToLocalDateTime(rs.getString("dt_transacao")), ZoneOffset.UTC)
+                OffsetDateTime odt = //OffsetDateTime.parse (rs.getString("dt_transacao") , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
+                OffsetDateTime.of(convertStringToLocalDateTime(rs.getString("dt_transacao")), ZoneOffset.UTC);
                 tr.setDt_transacao(odt);
                 tr.setFlg_status_tr(rs.getString("flg_status_tr"));
                 tr.setFlg_tipo_transacao(rs.getInt("flg_tipo_transacao"));
@@ -242,7 +244,9 @@ public class BancoDAOImplementacao implements BancoDAO {
             if (lista.isEmpty()) {
                 return null;
             } else {
-                return lista;
+            	TransacaoList list = new TransacaoList();
+            	list.setList(lista);
+                return list;
             }
 
         } catch (SQLException e) {

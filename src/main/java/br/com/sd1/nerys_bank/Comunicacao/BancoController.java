@@ -2,6 +2,7 @@ package br.com.sd1.nerys_bank.Comunicacao;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
 import br.com.sd1.nerys_bank.Modelo.Transacao;
+import br.com.sd1.nerys_bank.Modelo.TransacaoList;
 
 @RestController
 public class BancoController {
@@ -79,23 +81,25 @@ public class BancoController {
 		}
 	}
 
-	@RequestMapping("/extrato")
-	public String getTransacoes(Integer num_conta) {
+	@RequestMapping(value="/extrato", method = RequestMethod.GET)
+	public TransacaoList getTransacoes(Integer num_conta) {
 		ObjectMapper mapper = new ObjectMapper();
 		String retorno = "";
-		try {
-			retorno = mapper.writeValueAsString(banco.getTransacoes(num_conta));
-		} catch (JsonGenerationException e) {
+		//try {
+			
+			return banco.getTransacoes(num_conta);
+			//retorno = mapper.writeValueAsString(banco.getTransacoes(num_conta));
+		//} catch (JsonGenerationException e) {
+		// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
+		//	e.printStackTrace();
+		//} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return retorno;
+		//	e.printStackTrace();
+		//}
+		//return null;
 	}
 
 }
