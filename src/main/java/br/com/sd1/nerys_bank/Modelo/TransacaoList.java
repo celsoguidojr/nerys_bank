@@ -16,7 +16,8 @@ public class TransacaoList {
 	    
     public TransacaoList()
     {
-    	movimentacoes = new ArrayList<>(); 
+    	super();
+    	movimentacoes = new ArrayList<Transacao>(); 
     }
     
     public List<Transacao> getTransacoes()

@@ -41,13 +41,13 @@
                      <children>
                         <TableView fx:id="tableDados" layoutX="6.0" layoutY="5.0" prefHeight="175.0" prefWidth="521.0">
                           <columns>
+                              <TableColumn fx:id="colNumTransacao" prefWidth="118.0" text="Num Operação" />
                             <TableColumn fx:id="colDtTransacao" prefWidth="75.0" text="Data" />
                             <TableColumn fx:id="colContaOrigem" prefWidth="103.0" text="Conta Origem" />
                               <TableColumn fx:id="colContaDestino" prefWidth="100.0" text="Conta Destino" />
                               <TableColumn fx:id="colTipo" prefWidth="73.0" text="Tipo" />
                               <TableColumn fx:id="colValor" prefWidth="74.0" text="Valor" />
                               <TableColumn fx:id="colStatus" prefWidth="45.0" text="Status" />
-                              <TableColumn fx:id="colNumTransacao" prefWidth="118.0" text="Column X" />
                           </columns>
                         </TableView>
                      </children>
