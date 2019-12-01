@@ -69,7 +69,20 @@ public class FrmContaController implements Initializable {
      	novaConta.setNum_agencia(Integer.valueOf(txtAgencia.getText()));
     	novaConta.setSenha(txtSenha.getText());
     		
-		banco.abrirConta(novaConta);    
+		if(banco.abrirConta(novaConta) > 0)
+		{
+	    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	    	alert.setTitle("Confirmação");
+	    	alert.setHeaderText("Conta Criada!\nNº Conta:"+novaConta.getNumConta());
+	    	alert.showAndWait();
+		}
+		else
+		{
+	    	Alert alert = new Alert(AlertType.WARNING);
+	    	alert.setTitle("Atenção");
+	    	alert.setHeaderText("Problema na criação da conta.");
+	    	alert.showAndWait();
+		}
     }
     
     @FXML

@@ -11,7 +11,10 @@ import java.net.URLConnection;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
@@ -22,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import br.com.sd1.nerys_bank.Conexao;
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
+import br.com.sd1.nerys_bank.Modelo.TipoTransacao;
 import br.com.sd1.nerys_bank.Modelo.Transacao;
 import br.com.sd1.nerys_bank.Modelo.TransacaoList;
 import javafx.fxml.FXML;
@@ -38,6 +42,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
+import javafx.beans.InvalidationListener;
 import javafx.collections.*;
 
 public class FrmExtratoController implements Initializable {
@@ -59,13 +64,14 @@ public class FrmExtratoController implements Initializable {
 	private TableColumn<Transacao, Integer> colContaOrigem;
 
 	@FXML
-	private TableColumn<Transacao, Integer> colTipo;
+	private TableColumn<Transacao, TipoTransacao> colTipo;
 
 	@FXML
 	private TableColumn<Transacao, BigDecimal> colValor;
 
 	@FXML
 	private TableColumn<Transacao, Integer> colContaDestino;
+	
 
 	@FXML
 	private TableColumn<Transacao, String> colStatus;
@@ -99,14 +105,15 @@ public class FrmExtratoController implements Initializable {
 		colContaDestino.setCellValueFactory(new PropertyValueFactory("num_conta_dest"));
 		colValor.setCellValueFactory(new PropertyValueFactory("vlr_transacao"));
 		colStatus.setCellValueFactory(new PropertyValueFactory("flg_status_tr"));
-		tableDados.setItems(obList);
-
+		colTipo.setCellValueFactory(new PropertyValueFactory("flg_tipo_transacao"));
 		txtAgencia.setText(DadosLogin.getNum_agencia().toString());
 		txtConta.setText(DadosLogin.getNum_conta().toString());
 	}
 
 	@FXML
 	void consultar() {
+
+		
 		RestTemplate restTemplate = new RestTemplate();
 
 		String url = gerarUrl(DadosLogin.getNum_conta());
@@ -131,6 +138,9 @@ public class FrmExtratoController implements Initializable {
 		txtConta.setText("");
 		txtAgencia.setText("");
 		txtNomeCliente.setText("");
+		obList.clear();
+		tableDados.setItems(obList);
+
 		mudarTela("principal");
 	}
 

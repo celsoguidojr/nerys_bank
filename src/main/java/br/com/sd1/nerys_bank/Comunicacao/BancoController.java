@@ -20,6 +20,11 @@ import br.com.sd1.nerys_bank.Modelo.TransacaoList;
 public class BancoController {
 	BancoDAOImplementacao banco = new BancoDAOImplementacao();
 
+	@RequestMapping(value = "/")
+	public String getConexao() {
+		return "1";
+	}
+	
 	@RequestMapping(value = "/saldo", method = RequestMethod.GET)
 	public BigDecimal getSaldo(Integer num_conta) {
 		return banco.getSaldo(num_conta);

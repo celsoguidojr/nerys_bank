@@ -61,11 +61,12 @@ public class FrmCadastrarClienteController implements Initializable {
         cliente.setUf(txtUF.getText());
 
         BancoDAOImplementacao banco = new BancoDAOImplementacao();
+                
         if(banco.cadastrarCliente(cliente) > 0)
         {
         	Alert alert = new Alert(AlertType.CONFIRMATION);
         	alert.setTitle("Confirmação");
-        	alert.setHeaderText("Cliente Cadastrado.");
+        	alert.setHeaderText("Cliente Cadastrado.\nNº Cliente:" + cliente.getId_client());
         	alert.showAndWait();
         	mudarTela("conta");
         }

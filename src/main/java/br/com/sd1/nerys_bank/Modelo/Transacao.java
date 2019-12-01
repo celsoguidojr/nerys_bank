@@ -18,7 +18,7 @@ public class Transacao {
 
 	private Integer num_transacao;
 	private String dt_transacao;
-	private Integer flg_tipo_transacao;
+	private TipoTransacao flg_tipo_transacao;
 	private Integer num_conta_tr;
 	private Integer num_conta_dest;
 	private BigDecimal vlr_transacao;
@@ -26,16 +26,9 @@ public class Transacao {
 
 	public Transacao() {
 		super();
-		this.num_transacao = new Integer(0);
-		this.dt_transacao = "";
-		this.flg_tipo_transacao = 1;
-		this.num_conta_tr = 0;
-		this.num_conta_dest = 0;
-		this.vlr_transacao = new BigDecimal(0);
-		this.flg_status_tr = "0";
 	}
 
-	public Transacao(Integer num_transacao, String dt_transacao, Integer flg_tipo_transacao,
+	public Transacao(Integer num_transacao, String dt_transacao, TipoTransacao flg_tipo_transacao,
 			Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transacao, String flg_status_tr) {
 
 		this.num_transacao = num_transacao;
@@ -63,11 +56,11 @@ public class Transacao {
 		this.dt_transacao = dt_transacao;
 	}
 
-	public int getFlg_tipo_transacao() {
+	public TipoTransacao getFlg_tipo_transacao() {
 		return flg_tipo_transacao;
 	}
 
-	public void setFlg_tipo_transacao(int flg_tipo_transacao) {
+	public void setFlg_tipo_transacao(TipoTransacao flg_tipo_transacao) {
 		this.flg_tipo_transacao = flg_tipo_transacao;
 	}
 

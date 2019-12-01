@@ -16,13 +16,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="648.0" text="Nerys Bank - Extrato" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmExtratoController">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="798.0" text="Nerys Bank - Extrato" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.sd1.nerys_bank.view.FrmExtratoController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="647.0">
          <children>
-            <TitledPane animated="false" layoutX="15.0" layoutY="14.0" prefHeight="85.0" prefWidth="416.0" text="Dados">
+            <TitledPane animated="false" layoutX="15.0" layoutY="14.0" prefHeight="97.0" prefWidth="416.0" text="Dados">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="51.0" prefWidth="334.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="79.0" prefWidth="414.0">
                      <children>
                         <TextField fx:id="txtAgencia" disable="true" editable="false" layoutX="9.0" layoutY="24.0" prefHeight="25.0" prefWidth="59.0" />
                         <TextField fx:id="txtConta" disable="true" editable="false" layoutX="75.0" layoutY="24.0" prefHeight="25.0" prefWidth="63.0" />
@@ -34,43 +34,39 @@
                   </AnchorPane>
               </content>
             </TitledPane>
-            <Button fx:id="btnCancelar" layoutX="561.0" layoutY="477.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="77.0" text="Cancelar" />
-            <TitledPane animated="false" layoutX="15.0" layoutY="218.0" prefHeight="249.0" prefWidth="625.0" text="Dados">
+            <Button fx:id="btnCancelar" layoutX="714.0" layoutY="476.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="77.0" text="Cancelar" />
+            <TitledPane animated="false" layoutX="15.0" layoutY="123.0" prefHeight="344.0" prefWidth="776.0" text="Dados">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="532.0">
                      <children>
-                        <TableView fx:id="tableDados" layoutX="6.0" layoutY="5.0" prefHeight="209.0" prefWidth="613.0">
+                        <TableView fx:id="tableDados" layoutX="6.0" layoutY="5.0" prefHeight="308.0" prefWidth="758.0">
                           <columns>
                               <TableColumn fx:id="colNumTransacao" prefWidth="94.0" text="Num Operação" />
-                            <TableColumn fx:id="colDtTransacao" prefWidth="99.0" text="Data" />
-                            <TableColumn fx:id="colContaOrigem" prefWidth="103.0" text="Conta Origem" />
-                              <TableColumn fx:id="colContaDestino" prefWidth="100.0" text="Conta Destino" />
-                              <TableColumn fx:id="colTipo" prefWidth="73.0" text="Tipo" />
-                              <TableColumn fx:id="colValor" prefWidth="74.0" text="Valor" />
-                              <TableColumn fx:id="colStatus" prefWidth="45.0" text="Status" />
+                            <TableColumn fx:id="colDtTransacao" prefWidth="146.0" text="Data" />
+                            <TableColumn fx:id="colContaOrigem" prefWidth="109.0" text="Conta Origem" />
+                              <TableColumn fx:id="colContaDestino" prefWidth="104.0" text="Conta Destino" />
+                              <TableColumn fx:id="colTipo" prefWidth="121.0" text="Tipo" />
+                              <TableColumn fx:id="colValor" text="Valor" />
+                              <TableColumn fx:id="colStatus" prefWidth="103.0" text="Status" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane animated="false" layoutX="14.0" layoutY="108.0" prefHeight="98.0" prefWidth="415.0" text="Filtros">
+            <TitledPane animated="false" layoutX="441.0" layoutY="14.0" prefHeight="96.0" prefWidth="348.0" text="Período">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="112.0" prefWidth="264.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="77.0" prefWidth="331.0">
                      <children>
-                        <DatePicker fx:id="dtInicial" layoutX="14.0" layoutY="39.0" prefHeight="29.0" prefWidth="150.0" />
-                        <DatePicker fx:id="dtFinal" layoutX="173.0" layoutY="39.0" prefHeight="29.0" prefWidth="150.0" />
-                        <Button fx:id="btnConsultar" layoutX="332.0" layoutY="41.0" mnemonicParsing="false" onAction="#consultar" prefHeight="25.0" prefWidth="75.0" text="Consultar" />
-                        <Label layoutX="12.0" layoutY="6.0" text="Período">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font></Label>
-                        <Label layoutX="173.0" layoutY="21.0" text="Data Final: " />
-                        <Label layoutX="14.0" layoutY="22.0" text="Data Inicial: " />
+                        <DatePicker fx:id="dtInicial" layoutX="10.0" layoutY="25.0" prefHeight="29.0" prefWidth="150.0" />
+                        <DatePicker fx:id="dtFinal" layoutX="170.0" layoutY="25.0" prefHeight="29.0" prefWidth="150.0" />
+                        <Label layoutX="171.0" layoutY="-1.0" text="Data Final: " />
+                        <Label layoutX="11.0" layoutY="-1.0" text="Data Inicial: " />
                      </children>
                   </AnchorPane>
                </content>
             </TitledPane>
+            <Button fx:id="btnConsultar" layoutX="628.0" layoutY="477.0" mnemonicParsing="false" onAction="#consultar" prefHeight="25.0" prefWidth="75.0" text="Consultar" />
          </children></AnchorPane>
   </content>
 </TitledPane>

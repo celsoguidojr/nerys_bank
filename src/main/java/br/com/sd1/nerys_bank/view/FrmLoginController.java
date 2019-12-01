@@ -48,8 +48,8 @@ public class FrmLoginController {
 	
     @FXML
     void validarLogin() {	
-    	DadosLogin.setNum_conta(Integer.parseInt(txtConta.getText()));
 		DadosLogin.setNum_agencia(Integer.parseInt(txtAgencia.getText()));
+    	DadosLogin.setNum_conta(Integer.parseInt(txtConta.getText()));
 		DadosLogin.setSenha(txtSenha.getText());
 		
     	RestTemplate restTemplate = new RestTemplate();
@@ -72,8 +72,8 @@ public class FrmLoginController {
     	}
     }
     
-	private String gerarUrl(int num_conta,int num_agencia,String senha) {
-		String retorno = URL_WEBSERVICE + "consultar_conta?num_conta=" + num_conta+"&num_agencia="+num_agencia+"&senha="+ senha;
+	private String gerarUrl(int num_agencia, int num_conta, String senha) {
+		String retorno = URL_WEBSERVICE + "consultar_conta?num_agencia="+num_agencia+ "&num_conta="+num_conta+" &senha="+ senha;
 		return retorno;
 	}
     
