@@ -17,7 +17,7 @@ import java.time.ZoneOffset;
 public class Transacao {
 
 	private Integer num_transacao;
-	private OffsetDateTime dt_transacao;
+	private String dt_transacao;
 	private Integer flg_tipo_transacao;
 	private Integer num_conta_tr;
 	private Integer num_conta_dest;
@@ -27,7 +27,7 @@ public class Transacao {
 	public Transacao() {
 		super();
 		this.num_transacao = new Integer(0);
-		this.dt_transacao = OffsetDateTime.now();
+		this.dt_transacao = "";
 		this.flg_tipo_transacao = 1;
 		this.num_conta_tr = 0;
 		this.num_conta_dest = 0;
@@ -35,11 +35,11 @@ public class Transacao {
 		this.flg_status_tr = "0";
 	}
 
-	public Transacao(Integer num_transacao, OffsetDateTime dt_transacao, Integer flg_tipo_transacao,
+	public Transacao(Integer num_transacao, String dt_transacao, Integer flg_tipo_transacao,
 			Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transacao, String flg_status_tr) {
 
 		this.num_transacao = num_transacao;
-		//this.dt_transacao = dt_transacao;
+		this.dt_transacao = "";
 		this.flg_tipo_transacao = flg_tipo_transacao;
 		this.num_conta_tr = num_conta_tr;
 		this.num_conta_dest = num_conta_dest;
@@ -55,11 +55,11 @@ public class Transacao {
 		this.num_transacao = num_transacao;
 	}
 
-	public OffsetDateTime getDt_transacao() {
+	public String getDt_transacao() {
 		return dt_transacao;
 	}
 
-	public void setDt_transacao(OffsetDateTime dt_transacao) {
+	public void setDt_transacao(String dt_transacao) {
 		this.dt_transacao = dt_transacao;
 	}
 

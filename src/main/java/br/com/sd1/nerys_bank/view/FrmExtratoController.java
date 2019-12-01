@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.swing.text.TabExpander;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.sd1.nerys_bank.Conexao;
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
 import br.com.sd1.nerys_bank.Modelo.Transacao;
 import br.com.sd1.nerys_bank.Modelo.TransacaoList;
@@ -40,15 +42,15 @@ import javafx.collections.*;
 
 public class FrmExtratoController implements Initializable {
 
-	private static String URL_WEBSERVICE = "http://localhost:8989/";
-	
+	private static String URL_WEBSERVICE = Conexao.getIpServidor();
+
 	ObservableList<Transacao> obList = FXCollections.observableArrayList();
-	
+
 	@FXML
 	private TableView<Transacao> tableDados;
 
 	@FXML
-	private TableColumn<Transacao, OffsetDateTime> colDtTransacao;
+	private TableColumn<Transacao, LocalDateTime> colDtTransacao;
 
 	@FXML
 	private TableColumn<Transacao, Integer> colNumTransacao;
@@ -88,7 +90,7 @@ public class FrmExtratoController implements Initializable {
 
 	@FXML
 	private TextField txtNomeCliente;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		colDtTransacao.setCellValueFactory(new PropertyValueFactory("dt_transacao"));
@@ -98,34 +100,30 @@ public class FrmExtratoController implements Initializable {
 		colValor.setCellValueFactory(new PropertyValueFactory("vlr_transacao"));
 		colStatus.setCellValueFactory(new PropertyValueFactory("flg_status_tr"));
 		tableDados.setItems(obList);
-		
+
 		txtAgencia.setText(DadosLogin.getNum_agencia().toString());
 		txtConta.setText(DadosLogin.getNum_conta().toString());
 	}
 
 	@FXML
 	void consultar() {
-
 		RestTemplate restTemplate = new RestTemplate();
+
 		String url = gerarUrl(DadosLogin.getNum_conta());
 
 		TransacaoList response = restTemplate.getForObject(url, TransacaoList.class);
-		
-		List<Transacao> lista = response.getTransacoes();
-		 
-		convertListToObjList(lista);
-		 
-		 tableDados.setItems(obList);	
 
-		// List<Transacao> msgRetorno = (List<Transacao>)getURLData(gerarUrl());
+		List<Transacao> lista = response.getTransacoes();
+
+		convertListToObjList(lista);
+
+		tableDados.setItems(obList);
 	}
-	
-	private void convertListToObjList(List<Transacao> lista)
-	{
-		for(int i = 0 ; i < lista.size(); i++)
-		{
+
+	private void convertListToObjList(List<Transacao> lista) {
+		for (int i = 0; i < lista.size(); i++) {
 			obList.add(lista.get(i));
-		}		
+		}
 	}
 
 	@FXML

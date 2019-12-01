@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import br.com.sd1.nerys_bank.Conexao;
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
 import br.com.sd1.nerys_bank.Modelo.Conta;
 import javafx.fxml.FXML;
@@ -17,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class FrmSaqueController {
-	private static String URL_WEBSERVICE = "http://localhost:8989/";
+	private static String URL_WEBSERVICE = Conexao.getIpServidor();
 
 	@FXML
 	private TextField txtAgencia;

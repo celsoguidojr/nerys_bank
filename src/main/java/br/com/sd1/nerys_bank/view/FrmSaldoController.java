@@ -5,6 +5,7 @@
  */
 package br.com.sd1.nerys_bank.view;
 
+import br.com.sd1.nerys_bank.Conexao;
 import br.com.sd1.nerys_bank.Comunicacao.DadosLogin;
 import static br.com.sd1.nerys_bank.MainApp.mudarTela;
 
@@ -25,7 +26,7 @@ import javafx.scene.control.TextField;
 
 public class FrmSaldoController implements Initializable {
 
-	private static String URL_WEBSERVICE = "http://localhost:8989/";
+	private static String URL_WEBSERVICE = Conexao.getIpServidor();
 	@FXML
 	private TextField txtAgencia;
 

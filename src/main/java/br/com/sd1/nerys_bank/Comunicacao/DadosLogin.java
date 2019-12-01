@@ -4,7 +4,6 @@ public class DadosLogin {
 	private static Integer num_conta = 0;
 	private static Integer num_agencia = 0;
 	private static String senha;
-	
 
 	public static Integer getNum_conta() {
 		return num_conta;

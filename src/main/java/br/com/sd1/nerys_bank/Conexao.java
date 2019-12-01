@@ -11,7 +11,9 @@ import java.sql.SQLException;
 
 public class Conexao {
 
-	private Connection conexaoBanco = null;
+	private static Connection conexaoBanco = null;
+	
+	private static String urlServidor = "http://localhost:8989/";
 	
 	public Conexao()
 	{
@@ -23,9 +25,18 @@ public class Conexao {
 		}
 	}
 	
-	public Connection getConexao()
+	public static Connection getConexao()
 	{
 		return conexaoBanco;
 	}
 	
+	public static String getIpServidor()
+	{
+		return urlServidor;
+	}
+	
+	public static void setIpServidor(String ipServidor)
+	{
+		Conexao.urlServidor =  ipServidor;
+	}
 }

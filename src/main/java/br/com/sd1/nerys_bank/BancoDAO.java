@@ -18,7 +18,6 @@ public interface BancoDAO {
     //Metodos para interagir com o banco de dados
     // As regras serão feitas em outros métodos
     public Integer cadastrarCliente(Cliente cliente);
-    //Fará o registro da conta no banco de dados VLW FLW TAMO JUNTO E MISTURADO
     public Integer abrirConta(Conta conta);
     public BigDecimal getSaldo(Integer num_conta);
     public Integer gravarTransacao(Transacao transacao);

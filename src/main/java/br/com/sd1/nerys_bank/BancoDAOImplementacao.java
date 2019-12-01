@@ -167,10 +167,11 @@ public class BancoDAOImplementacao implements BancoDAO {
 
             ps = conexaoBanco.getConexao().prepareStatement(comando.toString());
 
-            Timestamp dataTransacao = Timestamp.valueOf(transacao.getDt_transacao().
-                    atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime());
-
-            ps.setTimestamp(1, dataTransacao);
+            LocalDateTime dataTransacao = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formatDateTime = dataTransacao.format(formatter);
+            
+            ps.setString(1, formatDateTime);
             ps.setInt(2, (transacao.getFlg_tipo_transacao()));
             ps.setInt(3, transacao.getNum_conta_tr());
             ps.setInt(4, transacao.getNum_conta_dest());
@@ -229,6 +230,7 @@ public class BancoDAOImplementacao implements BancoDAO {
                 Transacao tr = new Transacao();
 
                 tr.setNum_transacao(rs.getInt("num_transacao"));
+                tr.setDt_transacao(rs.getString("dt_transacao"));
                 //OffsetDateTime odt = OffsetDateTime.parse(rs.getString("dt_transacao"), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
                 //tr.setDt_transacao(odt);
                 tr.setFlg_status_tr(rs.getString("flg_status_tr"));
@@ -264,7 +266,7 @@ public class BancoDAOImplementacao implements BancoDAO {
 
     private LocalDateTime convertStringToLocalDateTime(String date) {
         String str = date;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
         return dateTime;
     }
@@ -285,7 +287,7 @@ public class BancoDAOImplementacao implements BancoDAO {
                 //INICIA O REGISTRO DA TRANSAÇÃO 
                 Transacao novaTransacao = new Transacao();
 
-                novaTransacao.setDt_transacao(OffsetDateTime.now());
+               // novaTransacao.setDt_transacao(LocalDateTime.now());
                 novaTransacao.setNum_conta_tr(num_conta);
                 novaTransacao.setNum_conta_dest(num_conta);
                 novaTransacao.setFlg_status_tr("Em Aberto");
@@ -318,7 +320,7 @@ public class BancoDAOImplementacao implements BancoDAO {
             //INICIA O REGISTRO DA TRANSAÇÃO 
             Transacao novaTransacao = new Transacao();
 
-            novaTransacao.setDt_transacao(OffsetDateTime.now());
+           // novaTransacao.setDt_transacao(LocalDateTime.now());
             novaTransacao.setNum_conta_tr(num_conta);
             novaTransacao.setNum_conta_dest(num_conta);
             novaTransacao.setFlg_status_tr("Em Aberto");
@@ -352,7 +354,7 @@ public class BancoDAOImplementacao implements BancoDAO {
                 //INICIA O REGISTRO DA TRANSAÇÃO 
                 Transacao novaTransacao = new Transacao();
 
-                novaTransacao.setDt_transacao(OffsetDateTime.now());
+               // novaTransacao.setDt_transacao(LocalDateTime.now());
                 novaTransacao.setNum_conta_tr(num_conta_tr);
                 novaTransacao.setNum_conta_dest(num_conta_dest);
                 novaTransacao.setFlg_status_tr("Em Aberto");
