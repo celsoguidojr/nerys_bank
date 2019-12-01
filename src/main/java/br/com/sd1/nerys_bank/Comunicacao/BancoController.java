@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.sd1.nerys_bank.BancoDAOImplementacao;
 import br.com.sd1.nerys_bank.Modelo.Cliente;
+import br.com.sd1.nerys_bank.Modelo.Conta;
 import br.com.sd1.nerys_bank.Modelo.Transacao;
 import br.com.sd1.nerys_bank.Modelo.TransacaoList;
 
@@ -36,38 +37,38 @@ public class BancoController {
 	@RequestMapping("/deposito")
 	public String deposito(Integer num_agencia, Integer num_conta, BigDecimal vlr_deposito) {
 		Transacao deposito = banco.deposito(num_conta, vlr_deposito);
-		if(deposito != null) {
+		if (deposito != null) {
 			deposito.getNum_transacao();
 			StringBuilder msgRetorno = new StringBuilder();
 			msgRetorno.append("-----Depósito realizado!-----\n");
-			msgRetorno.append("Nº Operação: "+ deposito.getNum_transacao() + "\n");
+			msgRetorno.append("Nº Operação: " + deposito.getNum_transacao() + "\n");
 			msgRetorno.append("Nº Conta: " + deposito.getNum_conta_dest() + "\n");
-			msgRetorno.append("Valor: "+ deposito.getVlr_transacao()+"\n");
-			
-			return msgRetorno.toString();			
-		}else {
+			msgRetorno.append("Valor: " + deposito.getVlr_transacao() + "\n");
+
+			return msgRetorno.toString();
+		} else {
 			return "Impossível realizar o depósito";
 		}
 	}
 
 	@RequestMapping("/transferencia")
 	public String transferencia(Integer num_conta_tr, Integer num_conta_dest, BigDecimal vlr_transferencia) {
-		
+
 		Transacao transferencia = banco.transferencia(num_conta_tr, num_conta_dest, vlr_transferencia);
-		
-		if(transferencia != null) {
-			
+
+		if (transferencia != null) {
+
 			StringBuilder msgRetorno = new StringBuilder();
 			msgRetorno.append("-----Transferência realizada!-----\n");
-			msgRetorno.append("Nº Operação: "+ transferencia.getNum_transacao() + "\n");
+			msgRetorno.append("Nº Operação: " + transferencia.getNum_transacao() + "\n");
 			msgRetorno.append("Nº Conta: " + transferencia.getNum_conta_dest() + "\n");
-			msgRetorno.append("Valor: "+ transferencia.getVlr_transacao()+"\n");
-			
-			return msgRetorno.toString();			
-		}else {
+			msgRetorno.append("Valor: " + transferencia.getVlr_transacao() + "\n");
+
+			return msgRetorno.toString();
+		} else {
 			return "Impossível realizar a transferência.";
 		}
-		
+
 	}
 
 	@RequestMapping("/cadastrar_cliente")
@@ -81,25 +82,19 @@ public class BancoController {
 		}
 	}
 
-	@RequestMapping(value="/extrato", method = RequestMethod.GET)
+	@RequestMapping(value = "/extrato", method = RequestMethod.GET)
 	public TransacaoList getTransacoes(Integer num_conta) {
-		ObjectMapper mapper = new ObjectMapper();
-		String retorno = "";
-		//try {
-			
-			return banco.getTransacoes(num_conta);
-			//retorno = mapper.writeValueAsString(banco.getTransacoes(num_conta));
-		//} catch (JsonGenerationException e) {
-		// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//} catch (IOException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}
-		//return null;
+		return banco.getTransacoes(num_conta);
+	}
+
+	@RequestMapping(value = "/consultar_conta", method = RequestMethod.GET)
+	public Conta getConta(Integer num_agencia, Integer num_conta, String senha) {
+		
+		BancoDAOImplementacao banco = new BancoDAOImplementacao();
+		Conta conta = new Conta(num_agencia, num_conta, senha);
+
+		return banco.getConta(conta);
+
 	}
 
 }

@@ -134,67 +134,6 @@ public class FrmExtratoController implements Initializable {
 		mudarTela("principal");
 	}
 
-	public static String getURLData(String url) {
-
-		// cria um StringBuilder para armazenar a saída
-		StringBuilder saida = new StringBuilder();
-
-		try {
-
-			// cria uma url com o endereço passado
-			URL u = new URL(url);
-
-			// abre a conexão com a url criada
-			URLConnection uCon = u.openConnection();
-
-			// obtém o input stream da conexão
-			InputStream in = uCon.getInputStream();
-
-			// um buffer para a leitura dos dados obtidos no input stream
-			byte[] buffer = new byte[2048];
-
-			// tenta colocar dados dentro do buffer. enquanto existirem dados
-			// (resultado da leitura diferentede -1), a execução continua
-			while (in.read(buffer) != -1) {
-				// faz o append dos dados lidos na saida (StringBuilder)
-				saida.append(new String(buffer));
-			}
-
-			// fecha o input stream
-			in.close();
-
-			// tratamento de excessões...
-		} catch (MalformedURLException exc) {
-
-			saida.append("ERRO: URL mal formada.");
-			exc.printStackTrace();
-
-		} catch (IOException exc) {
-
-			saida.append("IOException");
-			exc.printStackTrace();
-
-		} catch (SecurityException exc) {
-
-			saida.append("ERRO: Não há permissão para conexão.");
-			exc.printStackTrace();
-
-		} catch (IllegalArgumentException exc) {
-
-			saida.append("ERRO: O proxy é null ou de tipo incorreto.");
-			exc.printStackTrace();
-
-		} catch (UnsupportedOperationException exc) {
-
-			saida.append("ERRO: A subclasse que implementa o protocolo não suporta este método.");
-			exc.printStackTrace();
-
-		}
-
-		// retorna o que existe na saída na forma de uma String
-		return saida.toString();
-
-	}
 
 	private String gerarUrl(int num_conta) {
 		String retorno = URL_WEBSERVICE + "extrato?num_conta=" + num_conta;

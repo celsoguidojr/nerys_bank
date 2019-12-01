@@ -13,7 +13,7 @@ public class Conexao {
 
 	private static Connection conexaoBanco = null;
 	
-	private static String urlServidor = "http://localhost:8989/";
+	private static String urlServidor = "http://25.8.16.130:8989/";
 	
 	public Conexao()
 	{

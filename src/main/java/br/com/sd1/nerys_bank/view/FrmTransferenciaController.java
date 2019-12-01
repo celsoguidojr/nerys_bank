@@ -42,7 +42,6 @@ public class FrmTransferenciaController {
     	alert.setTitle("Informação");
     	alert.setHeaderText(msgRetorno);
     	alert.showAndWait();
-
     }
 
     @FXML
