@@ -11,74 +11,90 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
 
-
 public class FrmCaixaPrincipalController implements Initializable {
 
-    @FXML
-    private MenuItem btnExtrato;
+	@FXML
+	private MenuItem btnExtrato;
 
-    @FXML
-    private Menu btnMudarConta;
+	@FXML
+	private MenuItem btnMudarConta;
 
-    @FXML
-    private MenuItem btnSaldo;
+	@FXML
+	private MenuItem btnSaldo;
 
-    @FXML
-    private Menu btnOperacoes;
+	@FXML
+	private Menu btnOperacoes;
 
-    @FXML
-    private Pane pnInfoConta;
+	@FXML
+	private Pane pnInfoConta;
 
-    @FXML
-    private Menu btnSair;
+	@FXML
+	private MenuItem btnSair;
 
-    @FXML
-    private MenuItem btnDeposito;
+	@FXML
+	private MenuItem btnDeposito;
 
-    @FXML
-    private MenuItem btnSaque;
+	@FXML
+	private MenuBar menuOpcoes;
 
-    @FXML
-    private MenuItem btnTransferencia;
-    
-    @FXML
-    private MenuBar menuOpcoes;
-    
-      
-    @FXML
-    void getExtrato() {
+	@FXML
+	private MenuItem btnSaque;
+
+	@FXML
+	private MenuItem btnTransferencia;
+
+	@FXML
+	private MenuItem btnAdm;
+
+	@FXML
+	void getExtrato() {
 		mudarTela("extrato");
-    }
+	}
 
-    @FXML
-    void getSaldo() {
-    	mudarTela("saldo");
-    }
-    
-    @FXML
-    void getDeposito() {
-    	mudarTela("deposito");
-    }
-    
-    @FXML
-    void getSaque() {
-    	mudarTela("saque");
-    }
-    
-        @FXML
-    void getTransferencia() {
-    	mudarTela("transferencia");
-    }
-    
-    @FXML
-    void cancel() {
-    	mudarTela("login");
-    }
+	@FXML
+	void getSaldo() {
+		mudarTela("saldo");
+	}
+
+	@FXML
+	void getDeposito() {
+		mudarTela("deposito");
+	}
+
+	@FXML
+	void getSaque() {
+		mudarTela("saque");
+	}
+
+	@FXML
+	void getTransferencia() {
+		mudarTela("transferencia");
+	}
+
+	@FXML
+	void cancel() {
+		mudarTela("login");
+	}
+
+	@FXML
+	void getAdm() {
+		mudarTela("cliente");
+	}
+	
+	@FXML
+	void mudarConta() {
+		mudarTela("login");
+	}
+	
+	@FXML
+	void sair() {
+		mudarTela("sair");
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

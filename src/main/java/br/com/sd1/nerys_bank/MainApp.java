@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -22,6 +24,7 @@ public class MainApp extends Application {
     private static Scene depositoScene;
     private static Scene transferenciaScene; 
     private static Scene extratoScene; 
+    private static Scene clienteScene;
     
     @Override
     public void start(Stage stagePrincipal) throws Exception {
@@ -51,12 +54,16 @@ public class MainApp extends Application {
         Parent fxmlExtrato = FXMLLoader.load(getClass().getResource("/Caixa/frmExtrato.fxml"));
         extratoScene = new Scene(fxmlExtrato);
         
+        Parent fxmlCliente = FXMLLoader.load(getClass().getResource("/Administrativo/frmCadastrarCliente.fxml"));
+        clienteScene = new Scene(fxmlCliente);
+        
         mainScene.getStylesheets().add("/styles/frmprincipal.css");
         contaScene.getStylesheets().add("/styles/frmconta.css");    
         
         stage.setTitle("Nerys Bank - Caixa");
         stage.setScene(loginScene);
         stage.show();
+
     }
 
     public static void mudarTela(String tela){
@@ -84,6 +91,12 @@ public class MainApp extends Application {
             	break;
             case "extrato":
             	stage.setScene(extratoScene);
+            	break;
+            case "cliente":
+            	stage.setScene(clienteScene);
+            	break;
+            case "sair":
+            	stage.close();
             	break;
         }
     }

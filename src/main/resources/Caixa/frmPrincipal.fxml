@@ -31,8 +31,11 @@
                   <MenuItem fx:id="btnTransferencia" mnemonicParsing="false" onAction="#getTransferencia" text="Transferencia" />
             </items>
           </Menu>
-          <Menu fx:id="btnMudarConta" mnemonicParsing="false" text="Mudar Conta" />
-          <Menu fx:id="btnSair" mnemonicParsing="false" onAction="#cancel" text="Sair " />
+          <Menu fx:id="btnMudarConta" mnemonicParsing="false" text="Opções">
+               <items>
+                  <MenuItem fx:id="btnMudarConta" mnemonicParsing="false" onAction="#mudarConta" text="Mudar Conta" />
+                  <MenuItem fx:id="btnSair" mnemonicParsing="false" onAction="#sair" text="Sair" />
+               </items></Menu>
         </menus>
       </MenuBar>
       <Pane fx:id="pnInfoConta" layoutX="446.0" layoutY="25.0" prefHeight="166.0" prefWidth="154.0" />

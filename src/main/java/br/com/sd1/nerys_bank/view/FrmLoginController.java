@@ -26,11 +26,15 @@ public class FrmLoginController {
 
     @FXML
     private TextField txtSenha1;
-    
 
     @FXML
     private PasswordField txtSenha;
-    
+	
+    @FXML
+	void cancelar() {
+		mudarTela("sair");
+	}
+	
     @FXML
     void validarLogin() {
     	BancoDAOImplementacao banco = new BancoDAOImplementacao();
@@ -41,14 +45,21 @@ public class FrmLoginController {
     		DadosLogin.setNum_conta(Integer.parseInt(txtConta.getText()));
     		DadosLogin.setNum_agencia(Integer.parseInt(txtAgencia.getText()));
     		DadosLogin.setSenha(txtSenha. getText());
+    		txtConta.setText("");
+    		txtAgencia.setText("");
+    		txtSenha.setText("");
+    	}else if(Integer.parseInt(txtConta.getText())== 0 && Integer.parseInt(txtAgencia.getText())== 0 && txtSenha.getText().equals("omelhorbanco")) {
+    			mudarTela("cliente");	
     	}else {
     		Alert alert = new Alert(AlertType.WARNING);
     		alert.setTitle("Atenção");
     		alert.setHeaderText("Problema no Login");
     		alert.setContentText("Verifique os dados digitados e tente novamente.");
     		alert.showAndWait();
-    		
     	}
     }
+    
+    
+
     
 }

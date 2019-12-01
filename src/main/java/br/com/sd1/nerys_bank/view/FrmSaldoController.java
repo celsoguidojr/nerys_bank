@@ -135,6 +135,9 @@ public class FrmSaldoController implements Initializable {
 	
 	@FXML
     public void cancel() {
+		txtConta.setText("");
+		txtAgencia.setText("");
+		txtValorsSaldo.setText("");
     	mudarTela("principal");
     }
 
