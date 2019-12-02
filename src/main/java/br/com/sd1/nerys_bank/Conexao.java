@@ -50,7 +50,7 @@ public class Conexao {
 	{
 		RestTemplate restTemplate = new RestTemplate();
 
-		String response = restTemplate. getForObject(urlServidorPrincipal, String.class);
+		String response = restTemplate.getForObject(urlServidorPrincipal, String.class);
 
 		if(Integer.valueOf(response) > 0)
 		{

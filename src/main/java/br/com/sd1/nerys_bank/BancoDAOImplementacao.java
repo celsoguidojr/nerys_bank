@@ -78,8 +78,9 @@ public class BancoDAOImplementacao implements BancoDAO {
 			comando.append("id_titular, ");
 			comando.append("vlr_saldo, ");
 			comando.append("flg_tipo_conta, ");
-			comando.append("senha ) ");
-			comando.append("VALUES (?,?,?,?)");
+			comando.append("senha, ");
+			comando.append("num_agencia)");
+			comando.append("VALUES (?,?,?,?,?)");
 
 			ps = conexaoBanco.getConexao().prepareStatement(comando.toString());
 
@@ -87,7 +88,8 @@ public class BancoDAOImplementacao implements BancoDAO {
 			ps.setBigDecimal(2, conta.getVlr_saldo());
 			ps.setInt(3, conta.getFlg_tipo_conta());
 			ps.setString(4, conta.getSenha());
-
+			ps.setInt(5, conta.getNum_agencia());
+			
 			rs = ps.executeUpdate();
 						
 			if (rs > 0)
